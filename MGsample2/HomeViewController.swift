@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.loadTemplate()
         numberOfEmployeesDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
     }
 
@@ -26,6 +27,12 @@ class HomeViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         println("cashBalance = \(cashBalance)")
+    }
+
+    
+    func loadTemplate(){
+        let view:UIView = UINib(nibName: "HomeViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
+        self.view = view
     }
 
     /*
