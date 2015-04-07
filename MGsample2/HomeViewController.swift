@@ -13,6 +13,7 @@ var marketNameArray = ["Search","Local", "Entertainment", "News", "Commerce", "S
 var numberOfEmployeesDic = [String:Int]()
 
 class HomeViewController: UIViewController {
+    @IBOutlet var cashLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +28,24 @@ class HomeViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         println("cashBalance = \(cashBalance)")
+        cashLabel.text = "現金残高 \(cashBalance)万円"
     }
 
     
     func loadTemplate(){
         let view:UIView = UINib(nibName: "HomeViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
         self.view = view
+    }
+    @IBAction func hireButtonPushed(sender: AnyObject) {
+        self.performSegueWithIdentifier("segueToHire", sender: self)
+    }
+    
+    @IBAction func pdButtonPushed(sender: AnyObject) {
+        self.performSegueWithIdentifier("segueToP&D", sender: self)
+    }
+
+    @IBAction func launchButtonPushed(sender: AnyObject) {
+        self.performSegueWithIdentifier("segueToLaunch", sender: self)
     }
 
     /*

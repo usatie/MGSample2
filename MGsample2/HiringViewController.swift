@@ -22,22 +22,14 @@ class HiringViewController: UIViewController {
         self.loadTemplate()
         numberHiredDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
-
-//        var marketView:HiringView = self.view.viewWithTag(1) as HiringView
         for i in 0...5 {
-            var marketView:HiringView = HiringView(frame: CGRectMake(20, 60+100*CGFloat(i), 400, 80));
-            marketView.nameLabel.text = marketNameArray[i]
+            var marketView:HiringView = HiringView(frame: CGRectMake(20, 60+100*CGFloat(i), 640, 60));
+            marketView.nameLabel.text = marketNameArray[i] + "(\(numberOfEmployeesDic[marketNameArray[i]]!))"
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
             self.view.addSubview(marketView)
         }
-
-//        localMarketView.nameLabel.text = marketNameArray[1]
-//
-//        localMarketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
-//        localMarketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,14 +43,13 @@ class HiringViewController: UIViewController {
         self.view = view
     }
     
-    //Check if the action's availability
+    //Check the action's availability
     func canDeduct() -> Bool {
         if(numberHiredDic[market] > 0){ return true}
         else {return false}
     }
     
     func canAdd() -> Bool {
-//        var sum = numberHiredDic.reduce(0,+)
         let sum = Array(numberHiredDic.values).reduce(0, +)
         if(cashBalance > sum*10) {return true}
         else {return false}

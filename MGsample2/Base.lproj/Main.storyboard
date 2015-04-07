@@ -15,42 +15,15 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZK-gL-ig5">
-                                <rect key="frame" x="144" y="163" width="30" height="30"/>
-                                <state key="normal" title="採用">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="mfS-os-loZ" kind="show" id="yZv-ou-DR3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irD-ol-iww">
-                                <rect key="frame" x="129" y="225" width="60" height="30"/>
-                                <state key="normal" title="企画開発">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="aBE-j1-E9K" kind="show" id="oWu-Ft-4CX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptX-cv-hj7">
-                                <rect key="frame" x="129" y="283" width="60" height="30"/>
-                                <state key="normal" title="ローンチ">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="jDO-N4-gkq" kind="show" id="8xv-X9-vbz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.40000000000000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="first" id="acW-dT-cKf"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <segue destination="ILn-4M-P5r" kind="presentation" identifier="segueToResult" id="mew-v4-q9L"/>
+                        <segue destination="mfS-os-loZ" kind="show" identifier="segueToHire" id="HFX-YJ-4LQ"/>
+                        <segue destination="aBE-j1-E9K" kind="show" identifier="segueToP&amp;D" id="B5p-Nn-PqH"/>
+                        <segue destination="jDO-N4-gkq" kind="show" identifier="segueToLaunch" id="hRc-Oi-sfz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
