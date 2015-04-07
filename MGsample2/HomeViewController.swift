@@ -9,18 +9,15 @@
 import UIKit
 
 var cashBalance = 300
-var numberOfSearchEmployee = 0
-var numberOfLocalEmployee = 0
-var numberOfEntertainmentEmployee = 0
-var numberOfNewsEmployee = 0
-var numberOfCommerceEmployee = 0
-var numberOfSnsEmployee = 0
+var marketNameArray = ["Search","Local", "Entertainment", "News", "Commerce", "SNS"]
+var numberOfEmployeesDic = [String:Int]()
 
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        numberOfEmployeesDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +25,6 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(animated: Bool) {
-        println("numberOfSearchEmployee \(numberOfSearchEmployee)")
         println("cashBalance = \(cashBalance)")
     }
 
