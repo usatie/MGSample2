@@ -11,9 +11,6 @@ import UIKit
 class HiringViewController: UIViewController {
 
     var numberHiredDic = [String:Int]()
-    var numberPlanningDic = [String:Int]()
-    var numberProductDic = [String:Int]()
-    var numberLaunchDic = [String:Int]()
     var market = ""
     
     override func viewDidLoad() {
@@ -23,9 +20,6 @@ class HiringViewController: UIViewController {
         println("hiring")
         self.loadTemplate()
         numberHiredDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
-        numberPlanningDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
-        numberProductDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
-        numberLaunchDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 640, 60));

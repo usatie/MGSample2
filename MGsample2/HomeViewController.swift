@@ -11,6 +11,9 @@ import UIKit
 var cashBalance = 300
 var marketNameArray = ["Search","Local", "Entertainment", "News", "Commerce", "SNS"]
 var numberOfEmployeesDic = [String:Int]()
+var numberOfPlansDic = [String:Int]()
+var numberOfProductsDic = [String:Int]()
+var numberOfSharesDic = [String:Int]()
 
 class HomeViewController: UIViewController {
     @IBOutlet var cashLabel: UILabel!
@@ -20,6 +23,9 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.loadTemplate()
         numberOfEmployeesDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        numberOfPlansDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        numberOfProductsDic  = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        numberOfSharesDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
     }
 
     override func didReceiveMemoryWarning() {

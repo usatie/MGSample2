@@ -9,16 +9,15 @@
 import UIKit
 
 class P_DViewController: UIViewController {
-    var numberHiredDic = [String:Int]()
+    var numberPlannedDic = [String:Int]()
     var market = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        println("hiring")
         self.loadTemplate()
-        numberHiredDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        numberPlannedDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 640, 60));
@@ -43,7 +42,7 @@ class P_DViewController: UIViewController {
     
     //Check the action's availability
     func canDeduct() -> Bool {
-        if(numberHiredDic[market] > 0){ return true}
+        if(numberPlannedDic[market] > 0){ return true}
         else {return false}
     }
     
@@ -61,8 +60,8 @@ class P_DViewController: UIViewController {
         market = marketNameArray[marketView.tag-1]
         if(self.canDeduct()){
             println("\(market) hired less")
-            numberHiredDic[market] = numberHiredDic[market]! - 1
-            marketView.numberLabel.text = "\(numberHiredDic[market]!)"
+            numberPlannedDic[market] = numberPlannedDic[market]! - 1
+            marketView.numberLabel.text = "\(numberPlannedDic[market]!)"
         }
     }
     func plusButtonTapped(sender: AnyObject) {
@@ -72,14 +71,14 @@ class P_DViewController: UIViewController {
         market = marketNameArray[marketView.tag-1]
         if (self.canAdd()) {
             println("\(market) hired more")
-            numberHiredDic[market] = numberHiredDic[market]! + 1
-            marketView.numberLabel.text = "\(numberHiredDic[market]!)"
+            numberPlannedDic[market] = numberPlannedDic[market]! + 1
+            marketView.numberLabel.text = "\(numberPlannedDic[market]!)"
         }
     }
     func hireButtonPushed(sender: AnyObject) {
         for object : String in marketNameArray{
             cashBalance -= numberHiredDic[object]!*10
-            numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberHiredDic[object]!
+            numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberPlannedDic[object]!
             println("\(object) = \(numberOfEmployeesDic[object]!)")
         }
         
