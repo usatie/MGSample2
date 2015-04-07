@@ -8,11 +8,18 @@
 
 import UIKit
 
+var cashBalance = 300
+var numberOfSearchEmployee = 0
+var numberOfLocalEmployee = 0
+var numberOfEntertainmentEmployee = 0
+var numberOfNewsEmployee = 0
+var numberOfCommerceEmployee = 0
+var numberOfSnsEmployee = 0
+
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -20,7 +27,10 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        println("numberOfSearchEmployee \(numberOfSearchEmployee)")
+        println("cashBalance = \(cashBalance)")
+    }
 
     /*
     // MARK: - Navigation
