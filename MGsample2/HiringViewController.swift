@@ -77,7 +77,7 @@ class HiringViewController: UIViewController {
             marketView.numberLabel.text = "\(numberHiredDic[market]!)"
         }
     }
-    func hireButtonPushed(sender: AnyObject) {
+    @IBAction func hireButtonPushed(sender: AnyObject) {
         for object : String in marketNameArray{
             cashBalance -= numberHiredDic[object]!*10
             numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberHiredDic[object]!

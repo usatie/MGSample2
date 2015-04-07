@@ -36,7 +36,7 @@ class P_DViewController: UIViewController {
     
     //load xib file
     func loadTemplate(){
-        let view:UIView = UINib(nibName: "HiringViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
+        let view:UIView = UINib(nibName: "P&DViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
         self.view = view
     }
     
@@ -47,7 +47,7 @@ class P_DViewController: UIViewController {
     }
     
     func canAdd() -> Bool {
-        let sum = Array(numberHiredDic.values).reduce(0, +)
+        let sum = Array(numberPlannedDic.values).reduce(0, +)
         if(cashBalance > sum*10) {return true}
         else {return false}
     }
@@ -59,7 +59,7 @@ class P_DViewController: UIViewController {
         var marketView:MarketView = marketSubview.superview as MarketView
         market = marketNameArray[marketView.tag-1]
         if(self.canDeduct()){
-            println("\(market) hired less")
+            println("\(market) planned less")
             numberPlannedDic[market] = numberPlannedDic[market]! - 1
             marketView.numberLabel.text = "\(numberPlannedDic[market]!)"
         }
@@ -70,14 +70,14 @@ class P_DViewController: UIViewController {
         var marketView:MarketView = marketSubview.superview as MarketView
         market = marketNameArray[marketView.tag-1]
         if (self.canAdd()) {
-            println("\(market) hired more")
+            println("\(market) planned more")
             numberPlannedDic[market] = numberPlannedDic[market]! + 1
             marketView.numberLabel.text = "\(numberPlannedDic[market]!)"
         }
     }
-    func hireButtonPushed(sender: AnyObject) {
+    @IBAction func completeButtonPushed(sender: AnyObject) {
         for object : String in marketNameArray{
-            cashBalance -= numberHiredDic[object]!*10
+            cashBalance -= numberPlannedDic[object]!*10
             numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberPlannedDic[object]!
             println("\(object) = \(numberOfEmployeesDic[object]!)")
         }
