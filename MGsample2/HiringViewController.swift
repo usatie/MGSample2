@@ -11,6 +11,9 @@ import UIKit
 class HiringViewController: UIViewController {
 
     var numberHiredDic = [String:Int]()
+    var numberPlanningDic = [String:Int]()
+    var numberProductDic = [String:Int]()
+    var numberLaunchDic = [String:Int]()
     var market = ""
     
     override func viewDidLoad() {
@@ -20,6 +23,9 @@ class HiringViewController: UIViewController {
         println("hiring")
         self.loadTemplate()
         numberHiredDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        numberPlanningDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        numberProductDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        numberLaunchDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 640, 60));
@@ -55,7 +61,7 @@ class HiringViewController: UIViewController {
     }
 
     
-    @IBAction func minusButtonTapped(sender: AnyObject) {
+    func minusButtonTapped(sender: AnyObject) {
         var btn: UIButton = sender as UIButton
         var marketSubview:UIView = btn.superview as UIView!
         var marketView:MarketView = marketSubview.superview as MarketView
@@ -66,7 +72,7 @@ class HiringViewController: UIViewController {
             marketView.numberLabel.text = "\(numberHiredDic[market]!)"
         }
     }
-    @IBAction func plusButtonTapped(sender: AnyObject) {
+    func plusButtonTapped(sender: AnyObject) {
         var btn: UIButton = sender as UIButton
         var marketSubview:UIView = btn.superview as UIView!
         var marketView:MarketView = marketSubview.superview as MarketView
@@ -77,7 +83,7 @@ class HiringViewController: UIViewController {
             marketView.numberLabel.text = "\(numberHiredDic[market]!)"
         }
     }
-    @IBAction func hireButtonPushed(sender: AnyObject) {
+    func hireButtonPushed(sender: AnyObject) {
         for object : String in marketNameArray{
             cashBalance -= numberHiredDic[object]!*10
             numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberHiredDic[object]!
