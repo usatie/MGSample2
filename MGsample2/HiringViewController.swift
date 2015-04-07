@@ -23,7 +23,7 @@ class HiringViewController: UIViewController {
         numberHiredDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
         for i in 0...5 {
-            var marketView:HiringView = HiringView(frame: CGRectMake(20, 60+100*CGFloat(i), 640, 60));
+            var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 640, 60));
             marketView.nameLabel.text = marketNameArray[i] + "(\(numberOfEmployeesDic[marketNameArray[i]]!))"
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
@@ -59,7 +59,7 @@ class HiringViewController: UIViewController {
     @IBAction func minusButtonTapped(sender: AnyObject) {
         var btn: UIButton = sender as UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:HiringView = marketSubview.superview as HiringView
+        var marketView:MarketView = marketSubview.superview as MarketView
         market = marketNameArray[marketView.tag-1]
         if(self.canDeduct()){
             println("\(market) hired less")
@@ -70,7 +70,7 @@ class HiringViewController: UIViewController {
     @IBAction func plusButtonTapped(sender: AnyObject) {
         var btn: UIButton = sender as UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:HiringView = marketSubview.superview as HiringView
+        var marketView:MarketView = marketSubview.superview as MarketView
         market = marketNameArray[marketView.tag-1]
         if (self.canAdd()) {
             println("\(market) hired more")

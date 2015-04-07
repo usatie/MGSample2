@@ -24,9 +24,9 @@
 		249BE1861AD2BC4000FB8B88 /* P&DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 249BE1841AD2BC4000FB8B88 /* P&DViewController.xib */; };
 		249BE1891AD2BC6E00FB8B88 /* HiringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BE1871AD2BC6E00FB8B88 /* HiringViewController.swift */; };
 		249BE18A1AD2BC6E00FB8B88 /* HiringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 249BE1881AD2BC6E00FB8B88 /* HiringViewController.xib */; };
-		24A72F8F1AD39BEB00FD043F /* HiringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A72F8E1AD39BEB00FD043F /* HiringView.swift */; };
-		24A72F911AD39BF700FD043F /* HiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A72F901AD39BF700FD043F /* HiringView.xib */; };
 		24A72F931AD3BAD000FD043F /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A72F921AD3BAD000FD043F /* UIView+extension.swift */; };
+		24A72F991AD3D36B00FD043F /* MarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A72F981AD3D36B00FD043F /* MarketView.xib */; };
+		24A72F9B1AD3D37E00FD043F /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A72F9A1AD3D37E00FD043F /* MarketView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,9 +61,9 @@
 		249BE1841AD2BC4000FB8B88 /* P&DViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "P&DViewController.xib"; sourceTree = "<group>"; };
 		249BE1871AD2BC6E00FB8B88 /* HiringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiringViewController.swift; sourceTree = "<group>"; };
 		249BE1881AD2BC6E00FB8B88 /* HiringViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HiringViewController.xib; sourceTree = "<group>"; };
-		24A72F8E1AD39BEB00FD043F /* HiringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiringView.swift; sourceTree = "<group>"; };
-		24A72F901AD39BF700FD043F /* HiringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HiringView.xib; sourceTree = "<group>"; };
 		24A72F921AD3BAD000FD043F /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		24A72F981AD3D36B00FD043F /* MarketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarketView.xib; path = ../MarketView.xib; sourceTree = "<group>"; };
+		24A72F9A1AD3D37E00FD043F /* MarketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +148,8 @@
 				249BE1711AD2A8BF00FB8B88 /* HomeViewController.xib */,
 				249BE1871AD2BC6E00FB8B88 /* HiringViewController.swift */,
 				249BE1881AD2BC6E00FB8B88 /* HiringViewController.xib */,
-				24A72F8E1AD39BEB00FD043F /* HiringView.swift */,
-				24A72F901AD39BF700FD043F /* HiringView.xib */,
+				24A72F9A1AD3D37E00FD043F /* MarketView.swift */,
+				24A72F981AD3D36B00FD043F /* MarketView.xib */,
 				249BE1831AD2BC4000FB8B88 /* P&DViewController.swift */,
 				249BE1841AD2BC4000FB8B88 /* P&DViewController.xib */,
 				249BE17F1AD2BBCC00FB8B88 /* LaunchViewController.swift */,
@@ -249,9 +249,9 @@
 				249BE1581AD2A76000FB8B88 /* Images.xcassets in Resources */,
 				249BE1821AD2BBCC00FB8B88 /* LaunchViewController.xib in Resources */,
 				249BE1771AD2A90900FB8B88 /* ResultViewController.xib in Resources */,
+				24A72F991AD3D36B00FD043F /* MarketView.xib in Resources */,
 				249BE1731AD2A8BF00FB8B88 /* HomeViewController.xib in Resources */,
 				249BE1861AD2BC4000FB8B88 /* P&DViewController.xib in Resources */,
-				24A72F911AD39BF700FD043F /* HiringView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,9 +275,9 @@
 				24A72F931AD3BAD000FD043F /* UIView+extension.swift in Sources */,
 				249BE1721AD2A8BF00FB8B88 /* HomeViewController.swift in Sources */,
 				249BE17A1AD2A95100FB8B88 /* BalanceSheetViewController.swift in Sources */,
+				24A72F9B1AD3D37E00FD043F /* MarketView.swift in Sources */,
 				249BE1761AD2A90900FB8B88 /* ResultViewController.swift in Sources */,
 				249BE1851AD2BC4000FB8B88 /* P&DViewController.swift in Sources */,
-				24A72F8F1AD39BEB00FD043F /* HiringView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
