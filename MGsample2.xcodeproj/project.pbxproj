@@ -118,6 +118,8 @@
 		249BE14C1AD2A76000FB8B88 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24A72F9A1AD3D37E00FD043F /* MarketView.swift */,
+				24A72F981AD3D36B00FD043F /* MarketView.xib */,
 				249BE14D1AD2A76000FB8B88 /* Info.plist */,
 				24A72F921AD3BAD000FD043F /* UIView+extension.swift */,
 			);
@@ -148,8 +150,6 @@
 				249BE1711AD2A8BF00FB8B88 /* HomeViewController.xib */,
 				249BE1871AD2BC6E00FB8B88 /* HiringViewController.swift */,
 				249BE1881AD2BC6E00FB8B88 /* HiringViewController.xib */,
-				24A72F9A1AD3D37E00FD043F /* MarketView.swift */,
-				24A72F981AD3D36B00FD043F /* MarketView.xib */,
 				249BE1831AD2BC4000FB8B88 /* P&DViewController.swift */,
 				249BE1841AD2BC4000FB8B88 /* P&DViewController.xib */,
 				249BE17F1AD2BBCC00FB8B88 /* LaunchViewController.swift */,
