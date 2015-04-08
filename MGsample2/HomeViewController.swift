@@ -57,6 +57,11 @@ class HomeViewController: UIViewController {
         self.performSegueWithIdentifier("segueToLaunch", sender: self)
     }
 
+    @IBAction func acquireButtonPushed(sender: AnyObject) {
+    }
+    
+    @IBAction func changeDepartmentButtonPushed(sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 
