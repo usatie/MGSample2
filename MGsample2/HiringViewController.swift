@@ -25,7 +25,7 @@ class HiringViewController: UIViewController {
         
         for i in 0...2 {
             for j in 0...5 {
-                var marketView:MarketView = MarketView(frame: CGRectMake(220 + 180*CGFloat(i), 60+100*CGFloat(j), 180, 60));
+                var marketView:MarketView = MarketView(frame: CGRectMake(220 + 180*CGFloat(i), 60+100*CGFloat(j), 180, 100));
                 marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
                 marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
                 marketView.tag = j+1
@@ -36,7 +36,7 @@ class HiringViewController: UIViewController {
                     var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[j]]!
                     var engineer = employeesDic[jobTypeArray[1]]![marketNameArray[j]]!
                     var sales = employeesDic[jobTypeArray[2]]![marketNameArray[j]]!
-                    let nameLabel = UILabel(frame: CGRectMake(20, 60+100*CGFloat(j), 200, 60))
+                    let nameLabel = UILabel(frame: CGRectMake(20, 60+100*CGFloat(j), 200, 100))
                     nameLabel.text = "\(marketNameArray[j]) (\(marketer))(\(engineer))(\(sales))"
                     self.view.addSubview(nameLabel)
                 }

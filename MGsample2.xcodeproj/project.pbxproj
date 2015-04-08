@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240132B81AD5931100149E39 /* MarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A72F981AD3D36B00FD043F /* MarketView.xib */; };
+		240132B91AD5931500149E39 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A72F9A1AD3D37E00FD043F /* MarketView.swift */; };
 		249BE14F1AD2A76000FB8B88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BE14E1AD2A76000FB8B88 /* AppDelegate.swift */; };
 		249BE1561AD2A76000FB8B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249BE1541AD2A76000FB8B88 /* Main.storyboard */; };
 		249BE1581AD2A76000FB8B88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249BE1571AD2A76000FB8B88 /* Images.xcassets */; };
@@ -25,8 +27,6 @@
 		249BE1891AD2BC6E00FB8B88 /* HiringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BE1871AD2BC6E00FB8B88 /* HiringViewController.swift */; };
 		249BE18A1AD2BC6E00FB8B88 /* HiringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 249BE1881AD2BC6E00FB8B88 /* HiringViewController.xib */; };
 		24A72F931AD3BAD000FD043F /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A72F921AD3BAD000FD043F /* UIView+extension.swift */; };
-		24A72F991AD3D36B00FD043F /* MarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A72F981AD3D36B00FD043F /* MarketView.xib */; };
-		24A72F9B1AD3D37E00FD043F /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A72F9A1AD3D37E00FD043F /* MarketView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,10 +246,10 @@
 				249BE17B1AD2A95100FB8B88 /* BalanceSheetViewController.xib in Resources */,
 				249BE15B1AD2A76000FB8B88 /* LaunchScreen.xib in Resources */,
 				249BE18A1AD2BC6E00FB8B88 /* HiringViewController.xib in Resources */,
+				240132B81AD5931100149E39 /* MarketView.xib in Resources */,
 				249BE1581AD2A76000FB8B88 /* Images.xcassets in Resources */,
 				249BE1821AD2BBCC00FB8B88 /* LaunchViewController.xib in Resources */,
 				249BE1771AD2A90900FB8B88 /* ResultViewController.xib in Resources */,
-				24A72F991AD3D36B00FD043F /* MarketView.xib in Resources */,
 				249BE1731AD2A8BF00FB8B88 /* HomeViewController.xib in Resources */,
 				249BE1861AD2BC4000FB8B88 /* P&DViewController.xib in Resources */,
 			);
@@ -271,11 +271,11 @@
 			files = (
 				249BE1891AD2BC6E00FB8B88 /* HiringViewController.swift in Sources */,
 				249BE14F1AD2A76000FB8B88 /* AppDelegate.swift in Sources */,
+				240132B91AD5931500149E39 /* MarketView.swift in Sources */,
 				249BE1811AD2BBCC00FB8B88 /* LaunchViewController.swift in Sources */,
 				24A72F931AD3BAD000FD043F /* UIView+extension.swift in Sources */,
 				249BE1721AD2A8BF00FB8B88 /* HomeViewController.swift in Sources */,
 				249BE17A1AD2A95100FB8B88 /* BalanceSheetViewController.swift in Sources */,
-				24A72F9B1AD3D37E00FD043F /* MarketView.swift in Sources */,
 				249BE1761AD2A90900FB8B88 /* ResultViewController.swift in Sources */,
 				249BE1851AD2BC4000FB8B88 /* P&DViewController.swift in Sources */,
 			);

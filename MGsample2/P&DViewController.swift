@@ -23,18 +23,25 @@ class P_DViewController: UIViewController {
         numberDevelopedDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
         for i in 0...5 {
-            var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 402, 60));
+            var marketView:MarketView = MarketView(frame: CGRectMake(200, 60+100*CGFloat(i), 180, 100));
             var employee = employeesDic["Marketer"]![marketNameArray[i]]!
-//            marketView.nameLabel.text = marketNameArray[i] + "(\(employee))"
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
             marketView.type = "plan"
             self.view.addSubview(marketView)
+            var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[i]]!
+            var engineer = employeesDic[jobTypeArray[1]]![marketNameArray[i]]!
+            var sales = employeesDic[jobTypeArray[2]]![marketNameArray[i]]!
+            var plan = numberOfPlansDic[marketNameArray[i]]!
+            var product = numberOfProductsDic[marketNameArray[i]]!
+            let nameLabel = UILabel(frame: CGRectMake(20, 60+100*CGFloat(i), 200, 100))
+            nameLabel.text = "\(marketNameArray[i]) (\(plan))(\(product))"
+            self.view.addSubview(nameLabel)
+
         }
         for i in 0...5 {
-            var marketView:MarketView = MarketView(frame: CGRectMake(422, 60+100*CGFloat(i), 402, 60));
-//            marketView.nameLabel.hidden = true
+            var marketView:MarketView = MarketView(frame: CGRectMake(380, 60+100*CGFloat(i), 180, 100));
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1

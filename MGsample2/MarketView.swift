@@ -10,6 +10,7 @@ import UIKit
 
 class MarketView: UIView {
     @IBOutlet var numberLabel: UILabel!
+    @IBOutlet var availabilityLabel: UILabel!
     @IBOutlet var plusButton: UIButton!
     @IBOutlet var minusButton: UIButton!
     var number:Int = 0
