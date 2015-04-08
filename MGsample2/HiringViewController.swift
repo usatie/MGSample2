@@ -25,15 +25,17 @@ class HiringViewController: UIViewController {
         
         for i in 0...2 {
             for j in 0...5 {
-                var marketView:MarketView = MarketView(frame: CGRectMake(220 + 180*CGFloat(i), 100+100*CGFloat(j), 180, 100));
-                marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
-                marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
-                marketView.tag = j+1
-                marketView.type = jobTypeArray[i]
-                self.view.addSubview(marketView)
-                marketView.propertyLabel.hidden = false
-                var employee = employeesDic[jobTypeArray[i]]![marketNameArray[j]]!
-                marketView.propertyLabel.text = "(\(employee))"
+                if (i != 2 || j == 0){
+                    var marketView:MarketView = MarketView(frame: CGRectMake(220 + 180*CGFloat(i), 100+100*CGFloat(j), 180, 100));
+                    marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
+                    marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
+                    marketView.tag = j+1
+                    marketView.type = jobTypeArray[i]
+                    self.view.addSubview(marketView)
+                    marketView.propertyLabel.hidden = false
+                    var employee = employeesDic[jobTypeArray[i]]![marketNameArray[j]]!
+                    marketView.propertyLabel.text = "(\(employee))"
+                }
                 //name of the market label
                 if (i == 0){
                     var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[j]]!
