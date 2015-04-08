@@ -26,7 +26,6 @@ class HomeViewController: UIViewController {
         self.loadTemplate()
         var initialMarketDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         employeesDic = ["Marketer":initialMarketDic,"Engineer":initialMarketDic,"Sales":initialMarketDic]
-//        numberOfEmployeesDic = initialMarketDic
         numberOfPlansDic = initialMarketDic
         numberOfProductsDic = initialMarketDic
         numberOfSharesDic = initialMarketDic
