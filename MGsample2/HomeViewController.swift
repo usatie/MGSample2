@@ -8,7 +8,7 @@
 
 import UIKit
 
-var cashBalance = 300
+var cashBalance = 3000
 let marketNameArray = ["Search","Local", "Entertainment", "News", "Commerce", "SNS"]
 let jobTypeArray = ["Marketer","Engineer","Sales"]
 var employeesDic = [String:[String:Int]]()

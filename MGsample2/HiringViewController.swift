@@ -31,13 +31,16 @@ class HiringViewController: UIViewController {
                 marketView.tag = j+1
                 marketView.type = jobTypeArray[i]
                 self.view.addSubview(marketView)
+                marketView.propertyLabel.hidden = false
+                var employee = employeesDic[jobTypeArray[i]]![marketNameArray[j]]!
+                marketView.propertyLabel.text = "(\(employee))"
                 //name of the market label
                 if (i == 0){
                     var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[j]]!
                     var engineer = employeesDic[jobTypeArray[1]]![marketNameArray[j]]!
                     var sales = employeesDic[jobTypeArray[2]]![marketNameArray[j]]!
                     let nameLabel = UILabel(frame: CGRectMake(20, 60+100*CGFloat(j), 200, 100))
-                    nameLabel.text = "\(marketNameArray[j]) (\(marketer))(\(engineer))(\(sales))"
+                    nameLabel.text = "\(marketNameArray[j])"
                     self.view.addSubview(nameLabel)
                 }
             }

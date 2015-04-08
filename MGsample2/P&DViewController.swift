@@ -36,9 +36,10 @@ class P_DViewController: UIViewController {
             var plan = numberOfPlansDic[marketNameArray[i]]!
             var product = numberOfProductsDic[marketNameArray[i]]!
             let nameLabel = UILabel(frame: CGRectMake(20, 60+100*CGFloat(i), 200, 100))
-            nameLabel.text = "\(marketNameArray[i]) (\(plan))(\(product))"
+            nameLabel.text = "\(marketNameArray[i]) (\(marketer))(\(engineer))"
             self.view.addSubview(nameLabel)
-
+            marketView.propertyLabel.hidden = false
+            marketView.propertyLabel.text = "(\(plan))"
         }
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(380, 60+100*CGFloat(i), 180, 100));
@@ -47,6 +48,9 @@ class P_DViewController: UIViewController {
             marketView.tag = i+1
             marketView.type = "product"
             self.view.addSubview(marketView)
+            var product = numberOfProductsDic[marketNameArray[i]]!
+            marketView.propertyLabel.hidden = false
+            marketView.propertyLabel.text = "(\(product))"
         }
 
     }
