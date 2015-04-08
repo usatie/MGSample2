@@ -9,11 +9,10 @@
 import UIKit
 
 class MarketView: UIView {
-
-    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var plusButton: UIButton!
     @IBOutlet var minusButton: UIButton!
+    var number:Int = 0
     
     var type: String = ""
     

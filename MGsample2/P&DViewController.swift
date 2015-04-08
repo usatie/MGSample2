@@ -25,7 +25,7 @@ class P_DViewController: UIViewController {
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 402, 60));
             var employee = employeesDic["Marketer"]![marketNameArray[i]]!
-            marketView.nameLabel.text = marketNameArray[i] + "(\(employee))"
+//            marketView.nameLabel.text = marketNameArray[i] + "(\(employee))"
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
@@ -34,7 +34,7 @@ class P_DViewController: UIViewController {
         }
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(422, 60+100*CGFloat(i), 402, 60));
-            marketView.nameLabel.hidden = true
+//            marketView.nameLabel.hidden = true
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
