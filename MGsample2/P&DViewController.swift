@@ -24,7 +24,8 @@ class P_DViewController: UIViewController {
         
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 402, 60));
-            marketView.nameLabel.text = marketNameArray[i] + "(\(numberOfEmployeesDic[marketNameArray[i]]!))"
+            var employee = employeesDic["Marketer"]![marketNameArray[i]]!
+            marketView.nameLabel.text = marketNameArray[i] + "(\(employee))"
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
@@ -69,10 +70,12 @@ class P_DViewController: UIViewController {
         let sum = Array(numberPlannedDic.values).reduce(0, +) + Array(numberDevelopedDic.values).reduce(0, +)
         switch type {
             case "plan":
-                if(numberOfEmployeesDic[market]>numberPlannedDic[market] && cashBalance>sum*10) {return true}
+                var marketer = employeesDic["Marketer"]![market]!
+                if(marketer>numberPlannedDic[market] && cashBalance>sum*10) {return true}
                 else {return false}
             case "product":
-                if(numberOfPlansDic[market]>numberDevelopedDic[market] && numberOfEmployeesDic[market]>numberDevelopedDic[market] && cashBalance>sum*10) {return true}
+                var engineer = employeesDic["Engineer"]![market]!
+                if(numberOfPlansDic[market]>numberDevelopedDic[market] && engineer>numberDevelopedDic[market] && cashBalance>sum*10) {return true}
                 else {return false}
             default:
                 return false

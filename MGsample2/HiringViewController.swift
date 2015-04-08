@@ -23,7 +23,8 @@ class HiringViewController: UIViewController {
         
         for i in 0...5 {
             var marketView:MarketView = MarketView(frame: CGRectMake(20, 60+100*CGFloat(i), 640, 60));
-            marketView.nameLabel.text = marketNameArray[i] + "(\(numberOfEmployeesDic[marketNameArray[i]]!))"
+            var employee = employeesDic["Marketer"]![marketNameArray[i]]!
+            marketView.nameLabel.text = marketNameArray[i] + "(\(employee))"
             marketView.plusButton.addTarget(self, action:Selector("plusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
@@ -80,8 +81,11 @@ class HiringViewController: UIViewController {
     @IBAction func hireButtonPushed(sender: AnyObject) {
         for object : String in marketNameArray{
             cashBalance -= numberHiredDic[object]!*10
-            numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberHiredDic[object]!
-            println("\(object) = \(numberOfEmployeesDic[object]!)")
+//            numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberHiredDic[object]!
+//            println("\(object) = \(numberOfEmployeesDic[object]!)")
+            employeesDic["Marketer"]![object] = employeesDic["Marketer"]![object]! + numberHiredDic[object]!
+            var employee = employeesDic["Marketer"]![object]!
+            println("\(object) = \(employee)")
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
