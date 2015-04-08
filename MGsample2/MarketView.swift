@@ -15,7 +15,7 @@ class MarketView: UIView {
     @IBOutlet var plusButton: UIButton!
     @IBOutlet var minusButton: UIButton!
     
-    
+    var type: String = ""
     
     @IBInspectable var myCornerRadius : CGFloat {
         get {return self.layer.cornerRadius}
