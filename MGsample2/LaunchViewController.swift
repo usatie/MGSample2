@@ -37,7 +37,7 @@ class LaunchViewController: UIViewController {
             nameLabel.text = "\(marketNameArray[i])"
             self.view.addSubview(nameLabel)
             marketView.propertyLabel.hidden = false
-            marketView.propertyLabel.text = "(\(plan))"
+            marketView.propertyLabel.text = "(\(product))"
         }        
     }
     
