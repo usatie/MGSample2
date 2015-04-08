@@ -10,8 +10,9 @@ import UIKit
 
 class HiringViewController: UIViewController {
 
-    var numberHiredDic = [String:Int]()
+    var employeeHireDic = [String:[String:Int]]()
     var market = ""
+    var type = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +20,9 @@ class HiringViewController: UIViewController {
         // Do any additional setup after loading the view.
         println("hiring")
         self.loadTemplate()
-        numberHiredDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        var initialMarketDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
+        employeeHireDic = ["Marketer":initialMarketDic,"Engineer":initialMarketDic,"Sales":initialMarketDic]
         
-        var jobTypeArray = ["Marketer","Engineer","Sales"]
         for i in 0...2 {
             for j in 0...5 {
                 var marketView:MarketView = MarketView(frame: CGRectMake(220 + 180*CGFloat(i), 60+100*CGFloat(j), 180, 60));
@@ -56,12 +57,12 @@ class HiringViewController: UIViewController {
     
     //Check the action's availability
     func canDeduct() -> Bool {
-        if(numberHiredDic[market] > 0){ return true}
+        if(employeeHireDic[type]![market] > 0){ return true}
         else {return false}
     }
     
     func canAdd() -> Bool {
-        let sum = Array(numberHiredDic.values).reduce(0, +)
+        let sum = Array(employeeHireDic["Marketer"]!.values).reduce(0, +) + Array(employeeHireDic["Engineer"]!.values).reduce(0, +) + Array(employeeHireDic["Sales"]!.values).reduce(0, +)
         if(cashBalance > sum*10) {return true}
         else {return false}
     }
@@ -72,10 +73,11 @@ class HiringViewController: UIViewController {
         var marketSubview:UIView = btn.superview as UIView!
         var marketView:MarketView = marketSubview.superview as MarketView
         market = marketNameArray[marketView.tag-1]
+        type = marketView.type
         if(self.canDeduct()){
             println("\(market) hired less")
-            numberHiredDic[market] = numberHiredDic[market]! - 1
-            marketView.numberLabel.text = "\(numberHiredDic[market]!)"
+            employeeHireDic[type]![market] = employeeHireDic[type]![market]! - 1
+            marketView.numberLabel.text = "\(employeeHireDic[type]![market]!)"
         }
     }
     func plusButtonTapped(sender: AnyObject) {
@@ -83,20 +85,21 @@ class HiringViewController: UIViewController {
         var marketSubview:UIView = btn.superview as UIView!
         var marketView:MarketView = marketSubview.superview as MarketView
         market = marketNameArray[marketView.tag-1]
+        type = marketView.type
         if (self.canAdd()) {
             println("\(market) hired more")
-            numberHiredDic[market] = numberHiredDic[market]! + 1
-            marketView.numberLabel.text = "\(numberHiredDic[market]!)"
+            employeeHireDic[type]![market] = employeeHireDic[type]![market]! + 1
+            marketView.numberLabel.text = "\(employeeHireDic[type]![market]!)"
         }
     }
     @IBAction func hireButtonPushed(sender: AnyObject) {
         for object : String in marketNameArray{
-            cashBalance -= numberHiredDic[object]!*10
-//            numberOfEmployeesDic[object] = numberOfEmployeesDic[object]! + numberHiredDic[object]!
-//            println("\(object) = \(numberOfEmployeesDic[object]!)")
-            employeesDic["Marketer"]![object] = employeesDic["Marketer"]![object]! + numberHiredDic[object]!
-            var employee = employeesDic["Marketer"]![object]!
-            println("\(object) = \(employee)")
+            for jobType in jobTypeArray {
+                cashBalance -= employeeHireDic[jobType]![object]!*10
+                employeesDic[jobType]![object] = employeesDic[jobType]![object]! + employeeHireDic[jobType]![object]!
+                var employee = employeesDic[jobType]![object]!
+                println("\(object) = \(employee)")
+            }
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
