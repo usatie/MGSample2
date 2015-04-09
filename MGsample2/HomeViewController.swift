@@ -64,6 +64,12 @@ class HomeViewController: UIViewController {
     @IBAction func changeDepartmentButtonPushed(sender: AnyObject) {
         performSegueWithIdentifier("segueToChange", sender: self)
     }
+    
+    @IBAction func wildButtonPushed(sender: AnyObject) {
+        performSegueWithIdentifier("segueToWild", sender: self)
+    }
+
+    
     /*
     // MARK: - Navigation
 

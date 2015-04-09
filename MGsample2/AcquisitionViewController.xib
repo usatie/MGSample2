@@ -7,6 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AcquisitionViewController" customModule="MGsample2" customModuleProvider="target">
             <connections>
+                <outlet property="acquiringAbilityLabel" destination="Xde-Pi-Ti5" id="HJ4-FI-B7c"/>
+                <outlet property="acquisitionLabel" destination="RIy-5K-2kT" id="Zgc-AU-mxO"/>
+                <outlet property="acquisitionPickerView" destination="WcO-2K-i4X" id="bTp-oB-q0Y"/>
+                <outlet property="competingPricePickerView" destination="6H8-eo-uUZ" id="Fs8-WN-wba"/>
+                <outlet property="listingPriceLabel" destination="4Ap-MV-Jga" id="VNW-lk-tvO"/>
+                <outlet property="marketSegmentedControl" destination="gT1-jW-cyA" id="uO4-UL-FpR"/>
+                <outlet property="ownerSegmentedControl" destination="FNK-mc-WzG" id="CHy-ot-GwZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,21 +22,89 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="掲載価格" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Azt-e8-fSf">
-                    <rect key="frame" x="86" y="68" width="193" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="広告獲得能力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xde-Pi-Ti5">
-                    <rect key="frame" x="131" y="131" width="102" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="広告獲得能力：？？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xde-Pi-Ti5">
+                    <rect key="frame" x="106" y="133" width="153" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="競争価格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ap-MV-Jga">
-                    <rect key="frame" x="148" y="180" width="68" height="21"/>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6H8-eo-uUZ">
+                    <rect key="frame" x="92" y="398" width="180" height="162"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="nl8-ER-Lqf"/>
+                        <outlet property="delegate" destination="-1" id="QWW-md-sbj"/>
+                    </connections>
+                </pickerView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FNK-mc-WzG">
+                    <rect key="frame" x="121" y="305" width="123" height="29"/>
+                    <segments>
+                        <segment title="子"/>
+                        <segment title="親"/>
+                    </segments>
+                    <connections>
+                        <action selector="didOwnerSelected:" destination="-1" eventType="valueChanged" id="Xv9-8X-DdB"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="競争価格の設定" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHd-ad-JRT">
+                    <rect key="frame" x="123" y="369" width="119" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="広告獲得数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIk-En-t9r">
+                    <rect key="frame" x="403" y="369" width="85" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="獲得金額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNG-iH-obG">
+                    <rect key="frame" x="674" y="369" width="68" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="gT1-jW-cyA">
+                    <rect key="frame" x="21" y="238" width="738" height="29"/>
+                    <segments>
+                        <segment title="Search"/>
+                        <segment title="Local"/>
+                        <segment title="Entertainment"/>
+                        <segment title="News"/>
+                        <segment title="Commerce"/>
+                        <segment title="SNS"/>
+                    </segments>
+                    <connections>
+                        <action selector="didMarketSelected:" destination="-1" eventType="valueChanged" id="WFM-hR-48P"/>
+                    </connections>
+                </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcT-qh-vEJ">
+                    <rect key="frame" x="612" y="492" width="193" height="44"/>
+                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="広告を獲得する">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="acquireButtonPushed:" destination="-1" eventType="touchUpInside" id="cBI-Jb-o6U"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="マーケットと、競争価格を決めてください。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ap-MV-Jga">
+                    <rect key="frame" x="21" y="182" width="340" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WcO-2K-i4X">
+                    <rect key="frame" x="355" y="398" width="180" height="162"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="uyu-vq-3l3"/>
+                        <outlet property="delegate" destination="-1" id="gXe-6v-2dY"/>
+                    </connections>
+                </pickerView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0万円" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIy-5K-2kT">
+                    <rect key="frame" x="634" y="416" width="149" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
