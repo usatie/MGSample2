@@ -19,7 +19,7 @@ class HiringViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         println("hiring")
-        self.loadTemplate()
+        loadTemplate()
         var initialMarketDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         employeeHireDic = ["Marketer":initialMarketDic,"Engineer":initialMarketDic,"Sales":initialMarketDic]
         
@@ -31,7 +31,7 @@ class HiringViewController: UIViewController {
                     marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
                     marketView.tag = j+1
                     marketView.type = jobTypeArray[i]
-                    self.view.addSubview(marketView)
+                    view.addSubview(marketView)
                     marketView.propertyLabel.hidden = false
                     var employee = employeesDic[jobTypeArray[i]]![marketNameArray[j]]!
                     marketView.propertyLabel.text = "(\(employee))"
@@ -43,7 +43,7 @@ class HiringViewController: UIViewController {
                     var sales = employeesDic[jobTypeArray[2]]![marketNameArray[j]]!
                     let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(j), 200, 100))
                     nameLabel.text = "\(marketNameArray[j])"
-                    self.view.addSubview(nameLabel)
+                    view.addSubview(nameLabel)
                 }
             }
         }
@@ -56,8 +56,8 @@ class HiringViewController: UIViewController {
     
     //load xib file
     func loadTemplate(){
-        let view:UIView = UINib(nibName: "HiringViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
-        self.view = view
+        let HiringView:UIView = UINib(nibName: "HiringViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        view = HiringView
     }
     
     //Check the action's availability
@@ -67,31 +67,31 @@ class HiringViewController: UIViewController {
     }
     
     func canAdd() -> Bool {
-        let sum = Array(employeeHireDic["Marketer"]!.values).reduce(0, +) + Array(employeeHireDic["Engineer"]!.values).reduce(0, +) + Array(employeeHireDic["Sales"]!.values).reduce(0, +)
+        let sum = Array(employeeHireDic["Marketer"]!.values).reduce(0, combine:+) + Array(employeeHireDic["Engineer"]!.values).reduce(0, combine:+) + Array(employeeHireDic["Sales"]!.values).reduce(0, combine: +)
         if(cashBalance > sum*10) {return true}
         else {return false}
     }
 
     
     func minusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if(self.canDeduct()){
+        if(canDeduct()){
             println("\(market) hired less")
             employeeHireDic[type]![market] = employeeHireDic[type]![market]! - 1
             marketView.numberLabel.text = "\(employeeHireDic[type]![market]!)"
         }
     }
     func plusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if (self.canAdd()) {
+        if (canAdd()) {
             println("\(market) hired more")
             employeeHireDic[type]![market] = employeeHireDic[type]![market]! + 1
             marketView.numberLabel.text = "\(employeeHireDic[type]![market]!)"
@@ -107,6 +107,6 @@ class HiringViewController: UIViewController {
             }
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

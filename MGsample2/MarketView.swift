@@ -19,18 +19,18 @@ class MarketView: UIView {
     var type: String = ""
     
     @IBInspectable var myCornerRadius : CGFloat {
-        get {return self.layer.cornerRadius}
-        set {self.layer.cornerRadius = newValue}
+        get {return layer.cornerRadius}
+        set {layer.cornerRadius = newValue}
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        var view:UIView = NSBundle.mainBundle().loadNibNamed("MarketView", owner: self, options: nil).first as UIView
-        self.addSubview(view)
+        var marketView:UIView = NSBundle.mainBundle().loadNibNamed("MarketView", owner: self, options: nil).first as! UIView
+        addSubview(marketView)
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        var view:UIView = NSBundle.mainBundle().loadNibNamed("MarketView", owner: self, options: nil).first as UIView
-        self.addSubview(view)
+        var marketView:UIView = NSBundle.mainBundle().loadNibNamed("MarketView", owner: self, options: nil).first as! UIView
+        addSubview(marketView)
     }
 }

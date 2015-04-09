@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.loadTemplate()
+        loadTemplate()
         var initialMarketDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         employeesDic = ["Marketer":initialMarketDic,"Engineer":initialMarketDic,"Sales":initialMarketDic]
         numberOfPlansDic = initialMarketDic
@@ -42,26 +42,27 @@ class HomeViewController: UIViewController {
 
     
     func loadTemplate(){
-        let view:UIView = UINib(nibName: "HomeViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
-        self.view = view
+        let HomeView:UIView = UINib(nibName: "HomeViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        view = HomeView
     }
     @IBAction func hireButtonPushed(sender: AnyObject) {
-        self.performSegueWithIdentifier("segueToHire", sender: self)
+        performSegueWithIdentifier("segueToHire", sender: self)
     }
     
     @IBAction func pdButtonPushed(sender: AnyObject) {
-        self.performSegueWithIdentifier("segueToP&D", sender: self)
+        performSegueWithIdentifier("segueToP&D", sender: self)
     }
 
     @IBAction func launchButtonPushed(sender: AnyObject) {
-        self.performSegueWithIdentifier("segueToLaunch", sender: self)
+        performSegueWithIdentifier("segueToLaunch", sender: self)
     }
 
     @IBAction func acquireButtonPushed(sender: AnyObject) {
+        performSegueWithIdentifier("segueToAcquisition", sender: self)
     }
     
     @IBAction func changeDepartmentButtonPushed(sender: AnyObject) {
-        self.performSegueWithIdentifier("segueToChange", sender: self)
+        performSegueWithIdentifier("segueToChange", sender: self)
     }
     /*
     // MARK: - Navigation

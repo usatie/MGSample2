@@ -19,7 +19,7 @@ class ChangeViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         println("hiring")
-        self.loadTemplate()
+        loadTemplate()
         var initialMarketDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         employeeChangeDic = ["Marketer":employeesDic["Marketer"]!,"Engineer":employeesDic["Engineer"]!]
         for i in 0...1 {
@@ -29,7 +29,7 @@ class ChangeViewController: UIViewController {
                 marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
                 marketView.tag = j+1
                 marketView.type = jobTypeArray[i]//jobTypeArray[i]
-                self.view.addSubview(marketView)
+                view.addSubview(marketView)
                 marketView.propertyLabel.hidden = false
                 var employee = employeesDic[jobTypeArray[i]]![marketNameArray[j]]!
                 marketView.propertyLabel.text = "(\(employee))"
@@ -38,7 +38,7 @@ class ChangeViewController: UIViewController {
                 if (i == 0){
                     let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(j), 200, 100))
                     nameLabel.text = "\(marketNameArray[j])"
-                    self.view.addSubview(nameLabel)
+                    view.addSubview(nameLabel)
                 }
             }
         }
@@ -50,8 +50,8 @@ class ChangeViewController: UIViewController {
     }
     //load xib file
     func loadTemplate(){
-        let view:UIView = UINib(nibName: "ChangeViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
-        self.view = view
+        let ChangeView:UIView = UINib(nibName: "ChangeViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        view = ChangeView
     }
     
     //Check the action's availability
@@ -62,30 +62,30 @@ class ChangeViewController: UIViewController {
     
     func canAdd() -> Bool {
         let sum = getDiff("Marketer") + getDiff("Engineer")
-        if(cashBalance > sum*5 && Array(employeesDic[type]!.values).reduce(0, +) > Array(employeeChangeDic[type]!.values).reduce(0, +)) {return true}
+        if(cashBalance > sum*5 && Array(employeesDic[type]!.values).reduce(0, combine:+) > Array(employeeChangeDic[type]!.values).reduce(0, combine:+)) {return true}
         else {return false}
     }
     
     
     func minusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if(self.canDeduct()){
+        if(canDeduct()){
             println("\(market) hired less")
             employeeChangeDic[type]![market] = employeeChangeDic[type]![market]! - 1
             marketView.numberLabel.text = "\(employeeChangeDic[type]![market]!)"
         }
     }
     func plusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if (self.canAdd()) {
+        if (canAdd()) {
             println("\(market) hired more")
             employeeChangeDic[type]![market] = employeeChangeDic[type]![market]! + 1
             marketView.numberLabel.text = "\(employeeChangeDic[type]![market]!)"
@@ -100,12 +100,12 @@ class ChangeViewController: UIViewController {
     }
     
     func shouldChange(jobType: String) -> Bool {
-        return Array(employeesDic[jobType]!.values).reduce(0, +) == Array(employeeChangeDic[jobType]!.values).reduce(0, +)
+        return Array(employeesDic[jobType]!.values).reduce(0, combine:+) == Array(employeeChangeDic[jobType]!.values).reduce(0, combine:+)
     }
     @IBAction func changeButtonPushed(sender: AnyObject) {
-        let marketerDiff = abs(Array(employeesDic["Marketer"]!.values).reduce(0, +) - Array(employeeChangeDic["Marketer"]!.values).reduce(0, +))
+        let marketerDiff = abs(Array(employeesDic["Marketer"]!.values).reduce(0, combine:+) - Array(employeeChangeDic["Marketer"]!.values).reduce(0, combine:+))
 
-        let engineerDiff = abs(Array(employeesDic["Engineer"]!.values).reduce(0, +) - Array(employeeChangeDic["Engineer"]!.values).reduce(0, +))
+        let engineerDiff = abs(Array(employeesDic["Engineer"]!.values).reduce(0, combine:+) - Array(employeeChangeDic["Engineer"]!.values).reduce(0, combine:+))
 
         if(shouldChange("Marketer") && shouldChange("Engineer")) {
             println("\(cashBalance) before")
@@ -121,7 +121,7 @@ class ChangeViewController: UIViewController {
                 }
             }
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            dismissViewControllerAnimated(true, completion: nil)
         } else {
             println("Cannot dismiss any employees")
             

@@ -17,7 +17,7 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.loadTemplate()
+        loadTemplate()
         numberLaunchedDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
         for i in 0...5 {
@@ -27,7 +27,7 @@ class LaunchViewController: UIViewController {
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
             marketView.type = "plan"
-            self.view.addSubview(marketView)
+            view.addSubview(marketView)
             var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[i]]!
             var engineer = employeesDic[jobTypeArray[1]]![marketNameArray[i]]!
             var sales = employeesDic[jobTypeArray[2]]![marketNameArray[i]]!
@@ -35,7 +35,7 @@ class LaunchViewController: UIViewController {
             var product = numberOfProductsDic[marketNameArray[i]]!
             let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(i), 200, 100))
             nameLabel.text = "\(marketNameArray[i])"
-            self.view.addSubview(nameLabel)
+            view.addSubview(nameLabel)
             marketView.propertyLabel.hidden = false
             marketView.propertyLabel.text = "(\(product))"
         }        
@@ -48,8 +48,8 @@ class LaunchViewController: UIViewController {
     
     //load xib file
     func loadTemplate(){
-        let view:UIView = UINib(nibName: "LaunchViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
-        self.view = view
+        let LaunchView:UIView = UINib(nibName: "LaunchViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        view = LaunchView
     }
     
     //Check the action's availability
@@ -59,7 +59,7 @@ class LaunchViewController: UIViewController {
     }
     
     func canAdd() -> Bool {
-        let sum = Array(numberLaunchedDic.values).reduce(0, +)
+        let sum = Array(numberLaunchedDic.values).reduce(0, combine:+)
         var share = numberOfProductsDic[market]!
         if(share>numberLaunchedDic[market] && cashBalance>sum*10) {return true}
         else {return false}
@@ -67,24 +67,24 @@ class LaunchViewController: UIViewController {
     }
     
     func minusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if(self.canDeduct()){
+        if(canDeduct()){
             println("\(market) Launched less")
             numberLaunchedDic[market] = numberLaunchedDic[market]! - 1
             marketView.numberLabel.text = "\(numberLaunchedDic[market]!)"
         }
     }
     func plusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if (self.canAdd()) {
+        if (canAdd()) {
             println("\(market) Launched less")
             numberLaunchedDic[market] = numberLaunchedDic[market]! + 1
             marketView.numberLabel.text = "\(numberLaunchedDic[market]!)"
@@ -98,6 +98,6 @@ class LaunchViewController: UIViewController {
             println("\(object) share = \(numberOfSharesDic[object]!)")
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -18,7 +18,7 @@ class P_DViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.loadTemplate()
+        loadTemplate()
         numberPlannedDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         numberDevelopedDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
         
@@ -29,7 +29,7 @@ class P_DViewController: UIViewController {
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
             marketView.type = "plan"
-            self.view.addSubview(marketView)
+            view.addSubview(marketView)
             var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[i]]!
             var engineer = employeesDic[jobTypeArray[1]]![marketNameArray[i]]!
             var sales = employeesDic[jobTypeArray[2]]![marketNameArray[i]]!
@@ -37,7 +37,7 @@ class P_DViewController: UIViewController {
             var product = numberOfProductsDic[marketNameArray[i]]!
             let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(i), 200, 100))
             nameLabel.text = "\(marketNameArray[i]) (\(marketer))(\(engineer))"
-            self.view.addSubview(nameLabel)
+            view.addSubview(nameLabel)
             marketView.propertyLabel.hidden = false
             marketView.propertyLabel.text = "(\(plan))"
         }
@@ -47,7 +47,7 @@ class P_DViewController: UIViewController {
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
             marketView.type = "product"
-            self.view.addSubview(marketView)
+            view.addSubview(marketView)
             var product = numberOfProductsDic[marketNameArray[i]]!
             marketView.propertyLabel.hidden = false
             marketView.propertyLabel.text = "(\(product))"
@@ -62,8 +62,8 @@ class P_DViewController: UIViewController {
     
     //load xib file
     func loadTemplate(){
-        let view:UIView = UINib(nibName: "P&DViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
-        self.view = view
+        let PDView:UIView = UINib(nibName: "P&DViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        view = PDView
     }
     
     //Check the action's availability
@@ -78,7 +78,7 @@ class P_DViewController: UIViewController {
     }
     
     func canAdd() -> Bool {
-        let sum = Array(numberPlannedDic.values).reduce(0, +) + Array(numberDevelopedDic.values).reduce(0, +)
+        let sum = Array(numberPlannedDic.values).reduce(0, combine:+) + Array(numberDevelopedDic.values).reduce(0, combine:+)
         switch type {
             case "plan":
                 var marketer = employeesDic["Marketer"]![market]!
@@ -95,12 +95,12 @@ class P_DViewController: UIViewController {
     }
     
     func minusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if(self.canDeduct()){
+        if(canDeduct()){
             if(type == "plan") {
                 println("\(market) planned less")
                 numberPlannedDic[market] = numberPlannedDic[market]! - 1
@@ -113,12 +113,12 @@ class P_DViewController: UIViewController {
         }
     }
     func plusButtonTapped(sender: AnyObject) {
-        var btn: UIButton = sender as UIButton
+        var btn: UIButton = sender as! UIButton
         var marketSubview:UIView = btn.superview as UIView!
-        var marketView:MarketView = marketSubview.superview as MarketView
+        var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if (self.canAdd()) {
+        if (canAdd()) {
             if(type == "plan") {
                 println("\(market) planned less")
                 numberPlannedDic[market] = numberPlannedDic[market]! + 1
@@ -138,6 +138,6 @@ class P_DViewController: UIViewController {
             println("\(object) plan = \(numberOfPlansDic[object]!)\ndeveloped = \(numberOfProductsDic[object]!)")
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
