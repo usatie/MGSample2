@@ -61,6 +61,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func changeDepartmentButtonPushed(sender: AnyObject) {
+        self.performSegueWithIdentifier("segueToChange", sender: self)
     }
     /*
     // MARK: - Navigation

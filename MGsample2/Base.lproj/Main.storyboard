@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
+        <!--Change View Controller-->
+        <scene sceneID="cfQ-zq-NC0">
+            <objects>
+                <viewController id="7jb-xo-cAX" customClass="ChangeViewController" customModule="MGsample2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cx3-Vz-1S6"/>
+                        <viewControllerLayoutGuide type="bottom" id="n7Y-Y0-xyq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kKZ-Q1-CEH">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPu-tz-W75" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1338" y="-1667"/>
+        </scene>
         <!--ホーム-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -24,11 +45,12 @@
                         <segue destination="mfS-os-loZ" kind="show" identifier="segueToHire" id="HFX-YJ-4LQ"/>
                         <segue destination="aBE-j1-E9K" kind="show" identifier="segueToP&amp;D" id="B5p-Nn-PqH"/>
                         <segue destination="jDO-N4-gkq" kind="show" identifier="segueToLaunch" id="hRc-Oi-sfz"/>
+                        <segue destination="7jb-xo-cAX" kind="presentation" identifier="segueToChange" id="y5T-fu-myF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1334" y="-648"/>
+            <point key="canvasLocation" x="1338" y="-678"/>
         </scene>
         <!--ゲーム結果-->
         <scene sceneID="TAT-Ek-ADf">
