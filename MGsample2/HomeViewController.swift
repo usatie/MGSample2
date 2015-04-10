@@ -62,6 +62,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func jobChangeButtonPushed(sender: AnyObject) {
+        performSegueWithIdentifier("segueToJobChange", sender: self)
     }
     
     @IBAction func wildButtonPushed(sender: AnyObject) {

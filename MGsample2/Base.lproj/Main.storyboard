@@ -66,6 +66,7 @@
                         <segue destination="7jb-xo-cAX" kind="presentation" identifier="segueToChange" id="y5T-fu-myF"/>
                         <segue destination="raB-qb-dIq" kind="presentation" identifier="segueToAcquisition" id="ODo-1H-INV"/>
                         <segue destination="r9f-Ix-L9h" kind="presentation" identifier="segueToWild" id="9Mw-cs-TRF"/>
+                        <segue destination="WvR-5V-Qzw" kind="presentation" identifier="segueToJobChange" id="X4n-K2-j1l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -150,6 +151,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWl-Uk-K4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-663" y="-917"/>
+        </scene>
+        <!--Job Change View Controller-->
+        <scene sceneID="Kwb-ie-GIY">
+            <objects>
+                <viewController id="WvR-5V-Qzw" customClass="JobChangeViewController" customModule="MGsample2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eJp-hP-Zac"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eum-Ld-P6T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L19-Wg-L23">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ObB-MQ-mdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="152" y="-629"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
