@@ -16,6 +16,8 @@
 		244DE5E31AD78501009EAE81 /* WildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DE5E11AD78501009EAE81 /* WildViewController.xib */; };
 		244DE5E61AD7B365009EAE81 /* JobChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DE5E41AD7B365009EAE81 /* JobChangeViewController.swift */; };
 		244DE5E71AD7B365009EAE81 /* JobChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DE5E51AD7B365009EAE81 /* JobChangeViewController.xib */; };
+		244DE5EA1AD7D262009EAE81 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DE5E81AD7D262009EAE81 /* DebtViewController.swift */; };
+		244DE5EB1AD7D262009EAE81 /* DebtViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DE5E91AD7D262009EAE81 /* DebtViewController.xib */; };
 		245163AA1AD64A530017A5A8 /* AcquisitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245163A81AD64A530017A5A8 /* AcquisitionViewController.swift */; };
 		249BE14F1AD2A76000FB8B88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BE14E1AD2A76000FB8B88 /* AppDelegate.swift */; };
 		249BE1561AD2A76000FB8B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249BE1541AD2A76000FB8B88 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 		244DE5E11AD78501009EAE81 /* WildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WildViewController.xib; sourceTree = "<group>"; };
 		244DE5E41AD7B365009EAE81 /* JobChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobChangeViewController.swift; sourceTree = "<group>"; };
 		244DE5E51AD7B365009EAE81 /* JobChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobChangeViewController.xib; sourceTree = "<group>"; };
+		244DE5E81AD7D262009EAE81 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtViewController.swift; sourceTree = "<group>"; };
+		244DE5E91AD7D262009EAE81 /* DebtViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebtViewController.xib; sourceTree = "<group>"; };
 		245163A81AD64A530017A5A8 /* AcquisitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcquisitionViewController.swift; sourceTree = "<group>"; };
 		245163A91AD64A530017A5A8 /* AcquisitionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AcquisitionViewController.xib; sourceTree = "<group>"; };
 		249BE1491AD2A76000FB8B88 /* MGsample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGsample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +182,8 @@
 				245163A91AD64A530017A5A8 /* AcquisitionViewController.xib */,
 				244DE5E01AD78501009EAE81 /* WildViewController.swift */,
 				244DE5E11AD78501009EAE81 /* WildViewController.xib */,
+				244DE5E81AD7D262009EAE81 /* DebtViewController.swift */,
+				244DE5E91AD7D262009EAE81 /* DebtViewController.xib */,
 				249BE1741AD2A90900FB8B88 /* ResultViewController.swift */,
 				249BE1751AD2A90900FB8B88 /* ResultViewController.xib */,
 				249BE1781AD2A95100FB8B88 /* BalanceSheetViewController.swift */,
@@ -270,6 +276,7 @@
 				249BE17B1AD2A95100FB8B88 /* BalanceSheetViewController.xib in Resources */,
 				249BE15B1AD2A76000FB8B88 /* LaunchScreen.xib in Resources */,
 				249BE18A1AD2BC6E00FB8B88 /* HiringViewController.xib in Resources */,
+				244DE5EB1AD7D262009EAE81 /* DebtViewController.xib in Resources */,
 				240132B81AD5931100149E39 /* MarketView.xib in Resources */,
 				244DE5E31AD78501009EAE81 /* WildViewController.xib in Resources */,
 				249BE1581AD2A76000FB8B88 /* Images.xcassets in Resources */,
@@ -298,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				240132BE1AD5B5AD00149E39 /* ChangeViewController.swift in Sources */,
+				244DE5EA1AD7D262009EAE81 /* DebtViewController.swift in Sources */,
 				249BE1891AD2BC6E00FB8B88 /* HiringViewController.swift in Sources */,
 				249BE14F1AD2A76000FB8B88 /* AppDelegate.swift in Sources */,
 				240132B91AD5931500149E39 /* MarketView.swift in Sources */,

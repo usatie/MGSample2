@@ -16,6 +16,7 @@ var employeesDic = [String:[String:Int]]()
 var numberOfPlansDic = [String:Int]()
 var numberOfProductsDic = [String:Int]()
 var numberOfSharesDic = [String:Int]()
+var maxDebt = 3000
 
 class HomeViewController: UIViewController {
     @IBOutlet var cashLabel: UILabel!
@@ -71,5 +72,12 @@ class HomeViewController: UIViewController {
 
     @IBAction func changeDepartmentButtonPushed(sender: AnyObject) {
         performSegueWithIdentifier("segueToChange", sender: self)
+    }
+    
+    @IBAction func debtButtonPushed(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func periodEndButtonPushed(sender: AnyObject) {
     }
 }
