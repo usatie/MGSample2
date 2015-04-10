@@ -142,7 +142,7 @@ class WildViewController: UIViewController {
             style: UIAlertActionStyle.Default,
             handler:{
                 (action:UIAlertAction!) -> Void in
-                println("OK")1
+                println("OK")
                 //(1)シェア変動
                 numberOfSharesDic = self.shareChangeDic
             
