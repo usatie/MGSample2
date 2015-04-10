@@ -9,7 +9,7 @@
 import UIKit
 
 class WildViewController: UIViewController {
-    var employeeChangeDic = [String:[String:Int]]()
+    var employeeChangedDic = [String:[String:Int]]()
     var shareChangeDic = [String: Int]()
     var market = ""
     var type = ""
@@ -21,7 +21,7 @@ class WildViewController: UIViewController {
         println("hiring")
         loadTemplate()
         var initialMarketDic = ["Search":0,"Local":0, "Entertainment":0, "News":0, "Commerce":0, "SNS":0]
-        employeeChangeDic = employeesDic
+        employeeChangedDic = employeesDic
         shareChangeDic = numberOfSharesDic
         
         for i in 0...3 {
@@ -43,7 +43,7 @@ class WildViewController: UIViewController {
                 } else {
                     //企画、開発、営業について
                     if (i != 2 || j == 0){
-                        marketView.type = jobTypeArray[i]//jobTypeArray[i]
+                        marketView.type = jobTypeArray[i]
                         view.addSubview(marketView)
                         var employee = employeesDic[jobTypeArray[i]]![marketNameArray[j]]!
                         marketView.propertyLabel.text = "(\(employee))"
@@ -73,13 +73,13 @@ class WildViewController: UIViewController {
     
     //Check the action's availability
     func canDeduct() -> Bool {
-        if(employeeChangeDic[type]![market] > 0){ return true}
+        if(employeeChangedDic[type]![market] > 0){ return true}
         else {return false}
     }
     
     func canAdd() -> Bool {
         let sum = getDiff("Marketer") + getDiff("Engineer")
-        if(cashBalance > sum*5 && Array(employeesDic[type]!.values).reduce(0, combine:+) > Array(employeeChangeDic[type]!.values).reduce(0, combine:+)) {return true}
+        if(cashBalance > sum*5 && Array(employeesDic[type]!.values).reduce(0, combine:+) > Array(employeeChangedDic[type]!.values).reduce(0, combine:+)) {return true}
         else {return false}
     }
     
@@ -90,10 +90,15 @@ class WildViewController: UIViewController {
         var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if(canDeduct()){
-            println("\(market) hired less")
-            employeeChangeDic[type]![market] = employeeChangeDic[type]![market]! - 1
-            marketView.numberLabel.text = "\(employeeChangeDic[type]![market]!)"
+        if(type == "Share"){
+            shareChangeDic[market] = shareChangeDic[market]! - 1
+            marketView.numberLabel.text = "\(shareChangeDic[market]!)"
+        } else {
+            if(canDeduct()){
+                println("\(market) hired less")
+                employeeChangedDic[type]![market] = employeeChangedDic[type]![market]! - 1
+                marketView.numberLabel.text = "\(employeeChangedDic[type]![market]!)"
+            }
         }
     }
     func plusButtonTapped(sender: AnyObject) {
@@ -102,33 +107,52 @@ class WildViewController: UIViewController {
         var marketView:MarketView = marketSubview.superview as! MarketView
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
-        if (canAdd()) {
-            println("\(market) hired more")
-            employeeChangeDic[type]![market] = employeeChangeDic[type]![market]! + 1
-            marketView.numberLabel.text = "\(employeeChangeDic[type]![market]!)"
+        if(type == "Share"){
+            shareChangeDic[market] = shareChangeDic[market]! + 1
+            marketView.numberLabel.text = "\(shareChangeDic[market]!)"
+        } else {
+            if (canAdd()) {
+                println("\(market) hired more")
+                employeeChangedDic[type]![market] = employeeChangedDic[type]![market]! + 1
+                marketView.numberLabel.text = "\(employeeChangedDic[type]![market]!)"
+            }
         }
     }
     func getDiff(jobType: String) -> Int {
         var sum = 0
         for object:String in marketNameArray {
-            sum += abs(employeesDic[jobType]![object]! - employeeChangeDic[jobType]![object]!)
+            sum += abs(employeesDic[jobType]![object]! - employeeChangedDic[jobType]![object]!)
         }
         return sum/2
     }
     
-//    func shouldChange(jobType: String) -> Bool {
-//        return Array(employeesDic[jobType]!.values).reduce(0, combine:+) == Array(employeeChangeDic[jobType]!.values).reduce(0, combine:+)
-//    }
     @IBAction func changeButtonPushed(sender: AnyObject) {
-        let marketerDiff = abs(Array(employeesDic["Marketer"]!.values).reduce(0, combine:+) - Array(employeeChangeDic["Marketer"]!.values).reduce(0, combine:+))
+        let marketerDiff = abs(Array(employeesDic["Marketer"]!.values).reduce(0, combine:+) - Array(employeeChangedDic["Marketer"]!.values).reduce(0, combine:+))
+        let engineerDiff = abs(Array(employeesDic["Engineer"]!.values).reduce(0, combine:+) - Array(employeeChangedDic["Engineer"]!.values).reduce(0, combine:+))
+        let salesDiff = abs(Array(employeesDic["Sales"]!.values).reduce(0, combine:+) - Array(employeeChangedDic["Sales"]!.values).reduce(0, combine:+))
         
-        let engineerDiff = abs(Array(employeesDic["Engineer"]!.values).reduce(0, combine:+) - Array(employeeChangeDic["Engineer"]!.values).reduce(0, combine:+))
-        
+        let shareDiff = Array(shareChangeDic.values).reduce(0, combine:+) - Array(numberOfSharesDic.values).reduce(0, combine:+)
         //UIAlertView
-        let alert:UIAlertController = UIAlertController(title:"確認",
-            message: "以下の変更を反映しますか？\n企画：\(marketerDiff)人\n開発：\(engineerDiff)人\nを解雇しようとしています。",
-            preferredStyle: UIAlertControllerStyle.Alert)
+        let employeeStr = "企画：\(marketerDiff)人\n開発：\(engineerDiff)人\n営業：\(salesDiff)人\nを解雇しようとしています。\n"
+        let shareStr = "シェア：\(shareDiff)\nを獲得（喪失）しようとしています。\n"
+        var alertStr = "以下の変更を反映しますか？\n"
         
+        if (!isNotEmployeeChanged() && shareChangeDic != numberOfSharesDic) {
+            alertStr += employeeStr + shareStr
+        } else if (isNotEmployeeChanged() && shareChangeDic != numberOfSharesDic) {
+            alertStr += shareStr
+        } else if (!isNotEmployeeChanged() && shareChangeDic == numberOfSharesDic) {
+            alertStr += employeeStr
+        } else {
+            //変更が何もなければホームへ戻る
+            dismissViewControllerAnimated(true, completion: nil)
+            return
+        }
+        
+        let alert:UIAlertController = UIAlertController(title:"確認",
+            message:alertStr,
+            preferredStyle: UIAlertControllerStyle.Alert)
+
         //Cancel 一つだけしか指定できない
         let cancelAction:UIAlertAction = UIAlertAction(title: "反映せずにホーム画面へ戻る",
             style: UIAlertActionStyle.Destructive,
@@ -147,7 +171,7 @@ class WildViewController: UIViewController {
                 numberOfSharesDic = self.shareChangeDic
             
                 //(2)採用・解雇
-                employeesDic = self.employeeChangeDic
+                employeesDic = self.employeeChangedDic
                 
                 self.dismissViewControllerAnimated(true, completion: nil)
         })
@@ -157,12 +181,21 @@ class WildViewController: UIViewController {
             println("keep editing")
         })
         
-        //AlertもActionSheetも同じ
         alert.addAction(defaultAction)
         alert.addAction(editAction)
         alert.addAction(cancelAction)
         
         presentViewController(alert, animated: true, completion: nil)
-    }
 
+    }
+    func isNotEmployeeChanged() -> Bool {
+        var ifChanged = true
+        for object:String in jobTypeArray {
+            if(employeeChangedDic[object]! != employeesDic[object]!){
+                ifChanged = false
+            }
+        }
+        return ifChanged
+    }
+    
 }
