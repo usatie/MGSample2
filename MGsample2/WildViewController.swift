@@ -67,8 +67,8 @@ class WildViewController: UIViewController {
     }
     //load xib file
     func loadTemplate(){
-        let ChangeView:UIView = UINib(nibName: "WildViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
-        view = ChangeView
+        let WildView:UIView = UINib(nibName: "WildViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        view = WildView
     }
     
     //Check the action's availability

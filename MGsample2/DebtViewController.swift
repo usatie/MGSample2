@@ -20,6 +20,8 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loadTemplate()
+        maxDebtLabel.text = "現在の借入可能額：\(maxDebt)円"
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,14 +29,25 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    func loadTemplate(){
+        let DebtView:UIView = UINib(nibName: "DebtViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        view = DebtView
+    }
+    
+    @IBAction func debtButtonPushed(sender: AnyObject) {
+        var debt = maxDebt - debtPickerView.selectedRowInComponent(0)
+        maxDebt -= debt
+        cashBalance += debt - debt*10/100
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return maxDebt
+        return maxDebt+1
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return "\(row)"
+        return "\(maxDebt - row)"
     }
 }
