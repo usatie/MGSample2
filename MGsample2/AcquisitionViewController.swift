@@ -95,4 +95,7 @@ class AcquisitionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         cashBalance += acquisitionPickerView.selectedRowInComponent(0)*listingPrice
         dismissViewControllerAnimated(true, completion: nil)
     }
+    @IBAction func cancelButtonPushed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

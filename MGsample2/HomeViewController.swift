@@ -84,6 +84,32 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func periodEndButtonPushed(sender: AnyObject) {
+        //UIAlertView
+        let alert:UIAlertController = UIAlertController(title:"確認",
+            message: "期末処理は一度行うと取り消しできません。本当に期末処理を行いますか？",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        //Cancel 一つだけしか指定できない
+        let cancelAction:UIAlertAction = UIAlertAction(title: "キャンセル",
+            style: UIAlertActionStyle.Cancel,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                println("Cancel")
+        })
+        
+        let periodEndAction:UIAlertAction = UIAlertAction(title: "はい", style: UIAlertActionStyle.Default, handler: {
+            (action:UIAlertAction!) -> Void in
+            self.periodEndProcess()
+        })
+        
+        //AlertもActionSheetも同じ
+        alert.addAction(cancelAction)
+        alert.addAction(periodEndAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func periodEndProcess() {
         cashBalance -= currentDebt*interestRate/100
         var totalEmployee = 0
         for object:String in jobTypeArray {
@@ -101,22 +127,11 @@ class HomeViewController: UIViewController {
             println("profit  =\(profit)")
             cashBalance -= profit*40/100
         }
-        assetOfLastTerm = cashBalance
-        term += 1
-        if(term>3) {
-            maxDebt = assetOfLastTerm*3
-        } else {
-            maxDebt = assetOfLastTerm*term
-        }
-        
-        if(term>=3) {
-            interestRate = 5
-        }
-        cashLabel.text = "現金残高 \(cashBalance)万円"
+        assetOfLastTerm = cashBalance - currentDebt
         
         //UIAlertView
         let alert:UIAlertController = UIAlertController(title:"純資産発表",
-            message: "純資産は\(assetOfLastTerm)万円です。",
+            message: "純資産は\(assetOfLastTerm)万円です。\n借入利息は\(currentDebt*interestRate/100)万円です\n固定費(従業員)は\(totalEmployee*80)万円です。\n固定費(シェア)は\(totalShare*10)万円です。\n税引き前利益は\(profit)万円です。\n現金残高は\(cashBalance)万円です",
             preferredStyle: UIAlertControllerStyle.Alert)
         
         //Cancel 一つだけしか指定できない
@@ -131,6 +146,23 @@ class HomeViewController: UIViewController {
         alert.addAction(cancelAction)
         
         presentViewController(alert, animated: true, completion: nil)
+        term += 1
+        var multiplier = 1
+        if(term>3) {
+            multiplier = 3
+            interestRate = 5
+        } else {
+            multiplier = term
+        }
+        if(assetOfLastTerm > 0) {
+            maxDebt = assetOfLastTerm * multiplier
+        } else {
+            maxDebt = 0
+        }
+        
+        
+        cashLabel.text = "現金残高 \(cashBalance)万円"
 
+        
     }
 }

@@ -140,4 +140,9 @@ class P_DViewController: UIViewController {
         
         dismissViewControllerAnimated(true, completion: nil)
     }
+
+    @IBAction func cancelButtonPushed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

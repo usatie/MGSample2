@@ -190,6 +190,9 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         
         presentViewController(alert, animated: true, completion: nil)
     }
+    @IBAction func cancelButtonPushed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     func isNotEmployeeChanged() -> Bool {
         var ifChanged = true
         for object:String in jobTypeArray {

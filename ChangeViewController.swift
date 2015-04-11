@@ -146,4 +146,8 @@ class ChangeViewController: UIViewController {
         
     }
 
+    @IBAction func cancelButtonPushed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
 }

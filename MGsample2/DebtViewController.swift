@@ -41,6 +41,9 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         currentDebt += debt
         dismissViewControllerAnimated(true, completion: nil)
     }
+    @IBAction func cancelButtonPushed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
