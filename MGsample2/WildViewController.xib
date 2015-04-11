@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WildViewController" customModule="MGsample2" customModuleProvider="target">
             <connections>
+                <outlet property="cashBalancePickerView" destination="S2e-Gi-amg" id="aBo-sJ-L3D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -55,6 +56,19 @@
                         <action selector="changeButtonPushed:" destination="-1" eventType="touchUpInside" id="zzR-v5-INL"/>
                     </connections>
                 </button>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2e-Gi-amg">
+                    <rect key="frame" x="101" y="652" width="120" height="80"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="UBi-Ko-Eje"/>
+                        <outlet property="delegate" destination="-1" id="lc3-Mo-1oK"/>
+                    </connections>
+                </pickerView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M&amp;A金額" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0H-Zv-yD3">
+                    <rect key="frame" x="25" y="717" width="71" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>

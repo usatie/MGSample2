@@ -8,11 +8,12 @@
 
 import UIKit
 
-class WildViewController: UIViewController {
+class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     var employeeChangedDic = [String:[String:Int]]()
     var shareChangeDic = [String: Int]()
     var market = ""
     var type = ""
+    @IBOutlet var cashBalancePickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,7 @@ class WildViewController: UIViewController {
     
     func canAdd() -> Bool {
         let sum = getDiff("Marketer") + getDiff("Engineer")
-        if(cashBalance > sum*5 && Array(employeesDic[type]!.values).reduce(0, combine:+) > Array(employeeChangedDic[type]!.values).reduce(0, combine:+)) {return true}
+        if(cashBalance > sum*5/* && Array(employeesDic[type]!.values).reduce(0, combine:+) > Array(employeeChangedDic[type]!.values).reduce(0, combine:+)*/) {return true}
         else {return false}
     }
     
@@ -186,6 +187,8 @@ class WildViewController: UIViewController {
         alert.addAction(cancelAction)
         
         presentViewController(alert, animated: true, completion: nil)
+        
+        cashBalance = cashBalance - cashBalancePickerView.selectedRowInComponent(0)
 
     }
     func isNotEmployeeChanged() -> Bool {
@@ -198,4 +201,13 @@ class WildViewController: UIViewController {
         return ifChanged
     }
     
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return cashBalance+1
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return "\(row)万円"
+    }
 }
