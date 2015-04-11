@@ -20,6 +20,7 @@ var maxDebt = 3000
 var assetOfLastTerm = 3000
 var currentDebt = 0
 var interestRate = 10
+var term = 1
 
 class HomeViewController: UIViewController {
     @IBOutlet var cashLabel: UILabel!
@@ -94,10 +95,42 @@ class HomeViewController: UIViewController {
         println("debt cost = \(currentDebt*interestRate/100)")
         println("Employee cost = \(totalEmployee*80)")
         println("Share cost= \(totalShare*10)")
-        cashLabel.text = "現金残高 \(cashBalance)万円"
         var asset = cashBalance - currentDebt
         var profit = asset - assetOfLastTerm
-        cashBalance -= profit*40/100
-        assetOfLastTerm = cashBalance - currentDebt
+        if(profit>0){
+            println("profit  =\(profit)")
+            cashBalance -= profit*40/100
+        }
+        assetOfLastTerm = cashBalance
+        term += 1
+        if(term>3) {
+            maxDebt = assetOfLastTerm*3
+        } else {
+            maxDebt = assetOfLastTerm*term
+        }
+        
+        if(term>=3) {
+            interestRate = 5
+        }
+        cashLabel.text = "現金残高 \(cashBalance)万円"
+        
+        //UIAlertView
+        let alert:UIAlertController = UIAlertController(title:"純資産発表",
+            message: "純資産は\(assetOfLastTerm)万円です。",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        //Cancel 一つだけしか指定できない
+        let cancelAction:UIAlertAction = UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Cancel,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                println("Cancel")
+        })
+        
+        //AlertもActionSheetも同じ
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+
     }
 }
