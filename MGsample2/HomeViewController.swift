@@ -75,6 +75,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func debtButtonPushed(sender: AnyObject) {
+        performSegueWithIdentifier("segueToDebt", sender: self)
         
     }
     

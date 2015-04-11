@@ -67,11 +67,32 @@
                         <segue destination="raB-qb-dIq" kind="presentation" identifier="segueToAcquisition" id="ODo-1H-INV"/>
                         <segue destination="r9f-Ix-L9h" kind="presentation" identifier="segueToWild" id="9Mw-cs-TRF"/>
                         <segue destination="WvR-5V-Qzw" kind="presentation" identifier="segueToJobChange" id="X4n-K2-j1l"/>
+                        <segue destination="LMD-mn-UKJ" kind="presentation" identifier="segueToDebt" id="jAh-vT-0z8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1338" y="-678"/>
+        </scene>
+        <!--Debt View Controller-->
+        <scene sceneID="xoV-Rc-cVB">
+            <objects>
+                <viewController id="LMD-mn-UKJ" customClass="DebtViewController" customModule="MGsample2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DRO-nc-Vdn"/>
+                        <viewControllerLayoutGuide type="bottom" id="ruk-3B-LSH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X6D-Bg-jwF">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xbe-kZ-fkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1903" y="-217"/>
         </scene>
         <!--ゲーム結果-->
         <scene sceneID="TAT-Ek-ADf">
