@@ -37,7 +37,7 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     @IBAction func debtButtonPushed(sender: AnyObject) {
         var debt = maxDebt - debtPickerView.selectedRowInComponent(0)
         maxDebt -= debt
-        cashBalance += debt - debt*10/100
+        cashBalance += (debt - debt*interestRate/100)
         dismissViewControllerAnimated(true, completion: nil)
     }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

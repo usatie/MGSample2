@@ -17,6 +17,9 @@ var numberOfPlansDic = [String:Int]()
 var numberOfProductsDic = [String:Int]()
 var numberOfSharesDic = [String:Int]()
 var maxDebt = 3000
+var assetOfLastTerm = 3000
+var currentDebt = 0
+var interestRate = 10
 
 class HomeViewController: UIViewController {
     @IBOutlet var cashLabel: UILabel!
@@ -80,5 +83,21 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func periodEndButtonPushed(sender: AnyObject) {
+        cashBalance -= currentDebt*interestRate/100
+        var totalEmployee = 0
+        for object:String in jobTypeArray {
+            totalEmployee += Array(employeesDic[object]!.values).reduce(0,combine:+)
+        }
+        var totalShare = Array(numberOfSharesDic.values).reduce(0,combine:+)
+        cashBalance -= totalEmployee*80
+        cashBalance -= totalShare*10
+        println("debt cost = \(currentDebt*interestRate/100)")
+        println("Employee cost = \(totalEmployee*80)")
+        println("Share cost= \(totalShare*10)")
+        cashLabel.text = "現金残高 \(cashBalance)万円"
+        var asset = cashBalance - currentDebt
+        var profit = asset - assetOfLastTerm
+        cashBalance -= profit*40/100
+        assetOfLastTerm = cashBalance - currentDebt
     }
 }
