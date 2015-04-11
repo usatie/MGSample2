@@ -174,6 +174,8 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                 //(2)採用・解雇
                 employeesDic = self.employeeChangedDic
                 
+                //(3)cashBalance (M&A用)
+                cashBalance -= self.cashBalancePickerView.selectedRowInComponent(0)
                 self.dismissViewControllerAnimated(true, completion: nil)
         })
         
@@ -187,9 +189,6 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         alert.addAction(cancelAction)
         
         presentViewController(alert, animated: true, completion: nil)
-        
-        cashBalance = cashBalance - cashBalancePickerView.selectedRowInComponent(0)
-
     }
     func isNotEmployeeChanged() -> Bool {
         var ifChanged = true
