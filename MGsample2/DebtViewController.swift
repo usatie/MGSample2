@@ -21,7 +21,7 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
 
         // Do any additional setup after loading the view.
         loadTemplate()
-        maxDebtLabel.text = "現在の借入可能額：\(maxDebt)円"
+        maxDebtLabel.text = "現在の借入可能額：\(maxDebt)万円"
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +52,6 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return "\(maxDebt - row)"
+        return "\(maxDebt - row)万円"
     }
 }

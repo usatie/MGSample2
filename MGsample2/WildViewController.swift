@@ -149,46 +149,21 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             dismissViewControllerAnimated(true, completion: nil)
             return
         }
-        
-        let alert:UIAlertController = UIAlertController(title:"確認",
-            message:alertStr,
-            preferredStyle: UIAlertControllerStyle.Alert)
-
-        //Cancel 一つだけしか指定できない
-        let cancelAction:UIAlertAction = UIAlertAction(title: "反映せずにホーム画面へ戻る",
-            style: UIAlertActionStyle.Destructive,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                println("Cancel")
-                self.dismissViewControllerAnimated(true, completion: nil)
-        })
-        //default action
-        let defaultAction:UIAlertAction = UIAlertAction(title: "OK",
-            style: UIAlertActionStyle.Default,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                println("OK")
-                //(1)シェア変動
-                numberOfSharesDic = self.shareChangeDic
+        let closure = {
+            () -> Void in
+            println("this is closure")
+            //(1)シェア変動
+            numberOfSharesDic = self.shareChangeDic
             
-                //(2)採用・解雇
-                employeesDic = self.employeeChangedDic
-                
-                //(3)cashBalance (M&A用)
-                cashBalance -= self.cashBalancePickerView.selectedRowInComponent(0)
-                self.dismissViewControllerAnimated(true, completion: nil)
-        })
-        
-        let editAction:UIAlertAction = UIAlertAction(title: "修正する", style: UIAlertActionStyle.Default, handler: {
-            (action:UIAlertAction!) -> Void in
-            println("keep editing")
-        })
-        
-        alert.addAction(defaultAction)
-        alert.addAction(editAction)
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
+            //(2)採用・解雇
+            employeesDic = self.employeeChangedDic
+            
+            //(3)cashBalance (M&A用)
+            cashBalance -= self.cashBalancePickerView.selectedRowInComponent(0)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        util.alertAppear(self, title: "確認", message: alertStr, cancelTitle: "キャンセル", otherTitle: "OK", closure: closure)
+
     }
     @IBAction func cancelButtonPushed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)

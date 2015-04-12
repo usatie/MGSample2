@@ -18,6 +18,7 @@
 		244DE5E71AD7B365009EAE81 /* JobChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DE5E51AD7B365009EAE81 /* JobChangeViewController.xib */; };
 		244DE5EA1AD7D262009EAE81 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DE5E81AD7D262009EAE81 /* DebtViewController.swift */; };
 		244DE5EB1AD7D262009EAE81 /* DebtViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DE5E91AD7D262009EAE81 /* DebtViewController.xib */; };
+		244DE5ED1ADA183D009EAE81 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DE5EC1ADA183D009EAE81 /* UserUtil.swift */; };
 		245163AA1AD64A530017A5A8 /* AcquisitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245163A81AD64A530017A5A8 /* AcquisitionViewController.swift */; };
 		249BE14F1AD2A76000FB8B88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BE14E1AD2A76000FB8B88 /* AppDelegate.swift */; };
 		249BE1561AD2A76000FB8B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249BE1541AD2A76000FB8B88 /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		244DE5E51AD7B365009EAE81 /* JobChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobChangeViewController.xib; sourceTree = "<group>"; };
 		244DE5E81AD7D262009EAE81 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtViewController.swift; sourceTree = "<group>"; };
 		244DE5E91AD7D262009EAE81 /* DebtViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebtViewController.xib; sourceTree = "<group>"; };
+		244DE5EC1ADA183D009EAE81 /* UserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		245163A81AD64A530017A5A8 /* AcquisitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcquisitionViewController.swift; sourceTree = "<group>"; };
 		245163A91AD64A530017A5A8 /* AcquisitionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AcquisitionViewController.xib; sourceTree = "<group>"; };
 		249BE1491AD2A76000FB8B88 /* MGsample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGsample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 			children = (
 				249BE14E1AD2A76000FB8B88 /* AppDelegate.swift */,
 				249BE1541AD2A76000FB8B88 /* Main.storyboard */,
+				244DE5EC1ADA183D009EAE81 /* UserUtil.swift */,
 				249BE17E1AD2A9A500FB8B88 /* ViewControllers */,
 				249BE1571AD2A76000FB8B88 /* Images.xcassets */,
 				249BE1591AD2A76000FB8B88 /* LaunchScreen.xib */,
@@ -317,6 +320,7 @@
 				249BE1761AD2A90900FB8B88 /* ResultViewController.swift in Sources */,
 				245163AA1AD64A530017A5A8 /* AcquisitionViewController.swift in Sources */,
 				244DE5E21AD78501009EAE81 /* WildViewController.swift in Sources */,
+				244DE5ED1ADA183D009EAE81 /* UserUtil.swift in Sources */,
 				249BE1851AD2BC4000FB8B88 /* P&DViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

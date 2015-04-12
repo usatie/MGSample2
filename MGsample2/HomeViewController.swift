@@ -8,6 +8,7 @@
 
 import UIKit
 
+let util = UserUtil()
 var cashBalance = 3000
 let marketNameArray = ["Search","Local", "Entertainment", "News", "Commerce", "SNS"]
 let jobTypeArray = ["Marketer","Engineer","Sales"]
@@ -34,6 +35,7 @@ class HomeViewController: UIViewController {
         numberOfPlansDic = initialMarketDic
         numberOfProductsDic = initialMarketDic
         numberOfSharesDic = initialMarketDic
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +46,6 @@ class HomeViewController: UIViewController {
         println("cashBalance = \(cashBalance)")
         cashLabel.text = "現金残高 \(cashBalance)万円"
     }
-
     
     func loadTemplate(){
         let HomeView:UIView = UINib(nibName: "HomeViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
@@ -84,32 +85,18 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func periodEndButtonPushed(sender: AnyObject) {
+        println("button pushed")
         //UIAlertView
-        let alert:UIAlertController = UIAlertController(title:"確認",
-            message: "期末処理は一度行うと取り消しできません。本当に期末処理を行いますか？",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        
-        //Cancel 一つだけしか指定できない
-        let cancelAction:UIAlertAction = UIAlertAction(title: "キャンセル",
-            style: UIAlertActionStyle.Cancel,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                println("Cancel")
-        })
-        
-        let periodEndAction:UIAlertAction = UIAlertAction(title: "はい", style: UIAlertActionStyle.Default, handler: {
-            (action:UIAlertAction!) -> Void in
+        let closure = {
+            () -> Void in
+            println("this is closure")
             self.periodEndProcess()
-        })
-        
-        //AlertもActionSheetも同じ
-        alert.addAction(cancelAction)
-        alert.addAction(periodEndAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
+        }
+        util.alertAppear(self, title: "確認", message: "期末処理は一度行うと取り消しできません。本当に期末処理を行いますか？", cancelTitle: "キャンセル", otherTitle: "はい",closure:closure)
     }
     
     func periodEndProcess() {
+        println("period end")
         cashBalance -= currentDebt*interestRate/100
         var totalEmployee = 0
         for object:String in jobTypeArray {
@@ -129,23 +116,13 @@ class HomeViewController: UIViewController {
         }
         assetOfLastTerm = cashBalance - currentDebt
         
-        //UIAlertView
-        let alert:UIAlertController = UIAlertController(title:"純資産発表",
-            message: "純資産は\(assetOfLastTerm)万円です。\n借入利息は\(currentDebt*interestRate/100)万円です\n固定費(従業員)は\(totalEmployee*80)万円です。\n固定費(シェア)は\(totalShare*10)万円です。\n税引き前利益は\(profit)万円です。\n現金残高は\(cashBalance)万円です",
-            preferredStyle: UIAlertControllerStyle.Alert)
+        let closure = {
+            () -> Void in
+            println("this is closure")
+        }
+        util.alertAppear(self, title: "第\(term)期末結果発表", message: "純資産は\(assetOfLastTerm)万円です。\n借入利息は\(currentDebt*interestRate/100)万円です\n固定費(従業員)は\(totalEmployee*80)万円です。\n固定費(シェア)は\(totalShare*10)万円です。\n税引き前利益は\(profit)万円です。\n現金残高は\(cashBalance)万円です", cancelTitle: "OK", otherTitle: "",closure:closure)
         
-        //Cancel 一つだけしか指定できない
-        let cancelAction:UIAlertAction = UIAlertAction(title: "OK",
-            style: UIAlertActionStyle.Cancel,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                println("Cancel")
-        })
         
-        //AlertもActionSheetも同じ
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
         term += 1
         var multiplier = 1
         if(term>3) {

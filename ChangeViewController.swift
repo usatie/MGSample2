@@ -125,23 +125,11 @@ class ChangeViewController: UIViewController {
         } else {
             println("Cannot dismiss any employees")
             
-            //UIAlertView
-            let alert:UIAlertController = UIAlertController(title:"解雇できません",
-                message: "社員は解雇できません。全員どこかのサービスに振り分けてあげてください。\n企画：あと\(marketerDiff)人\n開発：あと\(engineerDiff)人",
-                preferredStyle: UIAlertControllerStyle.Alert)
-            
-            //Cancel 一つだけしか指定できない
-            let cancelAction:UIAlertAction = UIAlertAction(title: "OK",
-                style: UIAlertActionStyle.Cancel,
-                handler:{
-                    (action:UIAlertAction!) -> Void in
-                    println("Cancel")
-            })
-            
-            //AlertもActionSheetも同じ
-            alert.addAction(cancelAction)
-            
-            presentViewController(alert, animated: true, completion: nil)
+            let closure = {
+                () -> Void in
+                println("this is closure")
+            }
+            util.alertAppear(self, title: "解雇できません", message: "社員は解雇できません。全員どこかのサービスに振り分けてあげてください。\n企画：あと\(marketerDiff)人\n開発：あと\(engineerDiff)人", cancelTitle: "OK", otherTitle: "", closure: closure)
         }
         
     }

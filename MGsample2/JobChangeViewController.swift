@@ -130,48 +130,25 @@ class JobChangeViewController: UIViewController {
         return sum/2
     }
     
-//    func shouldChange(jobType: String) -> Bool {
-//        return Array(employeesDic[jobType]!.values).reduce(0, combine:+) == Array(employeeChangeDic[jobType]!.values).reduce(0, combine:+)
-//    }
     @IBAction func changeButtonPushed(sender: AnyObject) {
-//        let marketerDiff = abs(Array(employeesDic["Marketer"]!.values).reduce(0, combine:+) - Array(employeeChangeDic["Marketer"]!.values).reduce(0, combine:+))
-//        
-//        let engineerDiff = abs(Array(employeesDic["Engineer"]!.values).reduce(0, combine:+) - Array(employeeChangeDic["Engineer"]!.values).reduce(0, combine:+))
         var diff = 0
         for object:String in marketNameArray {
             diff += abs(employeeChangeDic["Marketer"]![object]! - employeesDic["Marketer"]![object]!)
         }
         
-        //UIAlertView
-        let alert:UIAlertController = UIAlertController(title:"確認",
-            message: "職種を変更します。",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        
-        //Cancel 一つだけしか指定できない
-        let cancelAction:UIAlertAction = UIAlertAction(title: "キャンセル",
-            style: UIAlertActionStyle.Cancel,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                println("Cancel")
-        })
-        
-        let okAction:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
-            (action:UIAlertAction!) -> Void in
-            println("ok")
-            println("job changed people = \(diff)")
-            cashBalance -= diff*5
-            employeesDic = self.employeeChangeDic
-            self.dismissViewControllerAnimated(true, completion: nil)
-        })
-        
-        //AlertもActionSheetも同じ
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        
         if (isNotEmployeeChanged()){
             dismissViewControllerAnimated(true, completion: nil)
         } else {
-            presentViewController(alert, animated: true, completion: nil)            
+            let closure = {
+                () -> Void in
+                println("this is closure")
+                println("ok")
+                println("job changed people = \(diff)")
+                cashBalance -= diff*5
+                employeesDic = self.employeeChangeDic
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            util.alertAppear(self, title: "確認", message: "職種を変更します。", cancelTitle: "キャンセル", otherTitle: "OK", closure: closure)
         }
     }
     
