@@ -8,12 +8,13 @@
 
 import UIKit
 
-class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+class WildViewController: UIViewController/*,UIPickerViewDelegate,UIPickerViewDataSource*/ {
     var employeeChangedDic = [String:[String:Int]]()
     var shareChangeDic = [String: Int]()
     var market = ""
     var type = ""
-    @IBOutlet var cashBalancePickerView: UIPickerView!
+//    @IBOutlet var cashBalancePickerView: UIPickerView!
+    @IBOutlet var maTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                 }
             }
         }
+        maTextField.placeholder = "最大\(cashBalance)万円"
     }
     
     override func didReceiveMemoryWarning() {
@@ -133,6 +135,8 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         let salesDiff = abs(Array(employeesDic["Sales"]!.values).reduce(0, combine:+) - Array(employeeChangedDic["Sales"]!.values).reduce(0, combine:+))
         
         let shareDiff = Array(shareChangeDic.values).reduce(0, combine:+) - Array(numberOfSharesDic.values).reduce(0, combine:+)
+        let maPrice = self.maTextField.text.toInt()
+
         //UIAlertView
         let employeeStr = "企画：\(marketerDiff)人\n開発：\(engineerDiff)人\n営業：\(salesDiff)人\nを解雇しようとしています。\n"
         let shareStr = "シェア：\(shareDiff)\nを獲得（喪失）しようとしています。\n"
@@ -149,6 +153,9 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             dismissViewControllerAnimated(true, completion: nil)
             return
         }
+        if (maPrice != nil) {
+            alertStr += "M&A価格：\(maPrice!)万円"
+        }
         let closure = {
             () -> Void in
             println("this is closure")
@@ -159,7 +166,10 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             employeesDic = self.employeeChangedDic
             
             //(3)cashBalance (M&A用)
-            cashBalance -= self.cashBalancePickerView.selectedRowInComponent(0)
+            let maPrice = self.maTextField.text.toInt()
+            if (maPrice != nil) {
+                cashBalance -= maPrice!//self.cashBalancePickerView.selectedRowInComponent(0)
+            }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         util.alertAppear(self, title: "確認", message: alertStr, cancelTitle: "キャンセル", otherTitle: "OK", closure: closure)
@@ -178,13 +188,13 @@ class WildViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         return ifChanged
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return cashBalance+1
-    }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return "\(row)万円"
-    }
+//    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return cashBalance+1
+//    }
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+//        return "\(row)万円"
+//    }
 }
