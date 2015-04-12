@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DebtViewController" customModule="MGsample2" customModuleProvider="target">
             <connections>
                 <outlet property="debtLabel" destination="vut-Li-HzH" id="m5c-6B-QAf"/>
-                <outlet property="debtPickerView" destination="agv-3d-K9k" id="CXO-2Q-Xdq"/>
+                <outlet property="debtTextField" destination="vCz-2W-nIE" id="amn-3W-QQO"/>
                 <outlet property="maxDebtLabel" destination="csP-q3-hJ5" id="9ZE-U8-gGn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,13 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agv-3d-K9k">
-                    <rect key="frame" x="120" y="225" width="120" height="162"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="Cjs-Ca-BrF"/>
-                        <outlet property="delegate" destination="-1" id="ogj-KO-FPr"/>
-                    </connections>
-                </pickerView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="現在借入可能額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csP-q3-hJ5">
                     <rect key="frame" x="3" y="129" width="354" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,15 +30,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jsa-iB-zXh">
-                    <rect key="frame" x="211" y="421" width="75" height="30"/>
-                    <state key="normal" title="キャンセル">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="cancelButtonPushed:" destination="-1" eventType="touchUpInside" id="YGk-9u-8W7"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxD-2j-SlI">
                     <rect key="frame" x="60" y="412" width="111" height="48"/>
                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,6 +39,26 @@
                     </state>
                     <connections>
                         <action selector="debtButtonPushed:" destination="-1" eventType="touchUpInside" id="Y0J-En-erO"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vCz-2W-nIE">
+                    <rect key="frame" x="144" y="299" width="154" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="借入金額" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r1-jt-Iac">
+                    <rect key="frame" x="62" y="303" width="68" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jsa-iB-zXh">
+                    <rect key="frame" x="211" y="421" width="87" height="30"/>
+                    <state key="normal" title="キャンセル">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonPushed:" destination="-1" eventType="touchUpInside" id="YGk-9u-8W7"/>
                     </connections>
                 </button>
             </subviews>

@@ -8,12 +8,11 @@
 
 import UIKit
 
-class WildViewController: UIViewController/*,UIPickerViewDelegate,UIPickerViewDataSource*/ {
+class WildViewController: UIViewController {
     var employeeChangedDic = [String:[String:Int]]()
     var shareChangeDic = [String: Int]()
     var market = ""
     var type = ""
-//    @IBOutlet var cashBalancePickerView: UIPickerView!
     @IBOutlet var maTextField: UITextField!
     
     override func viewDidLoad() {
@@ -94,8 +93,10 @@ class WildViewController: UIViewController/*,UIPickerViewDelegate,UIPickerViewDa
         market = marketNameArray[marketView.tag-1]
         type = marketView.type
         if(type == "Share"){
-            shareChangeDic[market] = shareChangeDic[market]! - 1
-            marketView.numberLabel.text = "\(shareChangeDic[market]!)"
+            if shareChangeDic[market] > 0{
+                shareChangeDic[market] = shareChangeDic[market]! - 1
+                marketView.numberLabel.text = "\(shareChangeDic[market]!)"
+            }
         } else {
             if(canDeduct()){
                 println("\(market) hired less")
@@ -167,8 +168,8 @@ class WildViewController: UIViewController/*,UIPickerViewDelegate,UIPickerViewDa
             
             //(3)cashBalance (M&A用)
             let maPrice = self.maTextField.text.toInt()
-            if (maPrice != nil) {
-                cashBalance -= maPrice!//self.cashBalancePickerView.selectedRowInComponent(0)
+            if (maPrice != nil && maPrice <= cashBalance) {
+                cashBalance -= maPrice!
             }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
@@ -187,14 +188,4 @@ class WildViewController: UIViewController/*,UIPickerViewDelegate,UIPickerViewDa
         }
         return ifChanged
     }
-    
-//    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return cashBalance+1
-//    }
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-//        return "\(row)万円"
-//    }
 }

@@ -8,12 +8,11 @@
 
 import UIKit
 
-class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+class DebtViewController: UIViewController {
 
     @IBOutlet var debtLabel: UILabel!
     @IBOutlet var maxDebtLabel: UILabel!
-    
-    @IBOutlet var debtPickerView: UIPickerView!
+    @IBOutlet var debtTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -22,6 +21,7 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         // Do any additional setup after loading the view.
         loadTemplate()
         maxDebtLabel.text = "現在の借入可能額：\(maxDebt)万円"
+        debtTextField.placeholder = "借入可能額：\(maxDebt)万円"
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,23 +35,15 @@ class DebtViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     }
     
     @IBAction func debtButtonPushed(sender: AnyObject) {
-        var debt = maxDebt - debtPickerView.selectedRowInComponent(0)
-        maxDebt -= debt
-        cashBalance += (debt - debt*interestRate/100)
-        currentDebt += debt
+        var debt = debtTextField.text.toInt()
+        if (debt != nil && debt <= maxDebt){
+            maxDebt -= debt!
+            cashBalance += (debt! - debt!*interestRate/100)
+            currentDebt += debt!
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func cancelButtonPushed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return maxDebt+1
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return "\(maxDebt - row)万円"
     }
 }
