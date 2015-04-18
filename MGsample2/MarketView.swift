@@ -14,6 +14,7 @@ class MarketView: UIView {
 
     @IBOutlet var plusButton: UIButton!
     @IBOutlet var minusButton: UIButton!
+    @IBOutlet var fullButton: UIButton!
     var number:Int = 0
     
     var type: String = ""

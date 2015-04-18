@@ -29,13 +29,15 @@ class P_DViewController: UIViewController {
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
             marketView.type = "plan"
+            marketView.fullButton.hidden = false
+            marketView.fullButton.addTarget(self, action: "fullButtonTapped:", forControlEvents: UIControlEvents.TouchDown)
             view.addSubview(marketView)
             var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[i]]!
             var engineer = employeesDic[jobTypeArray[1]]![marketNameArray[i]]!
             var sales = employeesDic[jobTypeArray[2]]![marketNameArray[i]]!
             var plan = numberOfPlansDic[marketNameArray[i]]!
             var product = numberOfProductsDic[marketNameArray[i]]!
-            let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(i), 200, 100))
+            let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(i)-16, 200, 100))
             nameLabel.text = "\(marketNameArray[i]) (\(marketer))(\(engineer))"
             view.addSubview(nameLabel)
             marketView.propertyLabel.hidden = false
@@ -47,10 +49,18 @@ class P_DViewController: UIViewController {
             marketView.minusButton.addTarget(self, action:Selector("minusButtonTapped:") , forControlEvents: UIControlEvents.TouchDown)
             marketView.tag = i+1
             marketView.type = "product"
+            marketView.fullButton.hidden = false
+            marketView.fullButton.addTarget(self, action: "fullButtonTapped:", forControlEvents: UIControlEvents.TouchDown)
             view.addSubview(marketView)
             var product = numberOfProductsDic[marketNameArray[i]]!
             marketView.propertyLabel.hidden = false
             marketView.propertyLabel.text = "(\(product))"
+        }
+        
+        for i in 0...6 {
+            let div = UIView(frame: CGRectMake(20, 100*CGFloat(i)+100+8, 560, 2))
+            div.backgroundColor = UIColor.grayColor()
+            view.addSubview(div)
         }
 
     }
@@ -130,6 +140,40 @@ class P_DViewController: UIViewController {
             }
         }
     }
+    
+    func fullButtonTapped(sender: AnyObject) {
+        var btn: UIButton = sender as! UIButton
+        var marketSubview:UIView = btn.superview as UIView!
+        var marketView:MarketView = marketSubview.superview as! MarketView
+        market = marketNameArray[marketView.tag-1]
+        type = marketView.type
+        if type == "plan" {
+            let marketer = employeesDic["Marketer"]![market]!
+            var sum = Array(numberPlannedDic.values).reduce(0, combine:+) + Array(numberDevelopedDic.values).reduce(0, combine:+)
+            var i = numberPlannedDic[market]!
+            while (i < marketer && (sum + 1)*10 <= cashBalance) {
+                i += 1
+                sum += 1
+                numberPlannedDic[market] = i
+            }
+            marketView.numberLabel.text = "\(numberPlannedDic[market]!)"
+        } else if type == "product" {
+            let engineer = employeesDic["Engineer"]![market]!
+            var sum = Array(numberPlannedDic.values).reduce(0, combine:+) + Array(numberDevelopedDic.values).reduce(0, combine:+)
+            var i = numberDevelopedDic[market]!
+            while (i < engineer && i < numberOfPlansDic[market] && (sum + 1)*10 <= cashBalance) {
+                i += 1
+                sum += 1
+                numberDevelopedDic[market] = i
+            }
+            println("product")
+            marketView.numberLabel.text = "\(numberDevelopedDic[market]!)"
+        }
+
+
+        
+    }
+    
     @IBAction func completeButtonPushed(sender: AnyObject) {
         for object : String in marketNameArray{
             cashBalance -= numberPlannedDic[object]!*10 + numberDevelopedDic[object]!*10

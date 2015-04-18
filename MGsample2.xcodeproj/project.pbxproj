@@ -12,6 +12,7 @@
 		240132BE1AD5B5AD00149E39 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240132BC1AD5B5AD00149E39 /* ChangeViewController.swift */; };
 		240132BF1AD5B5AD00149E39 /* ChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240132BD1AD5B5AD00149E39 /* ChangeViewController.xib */; };
 		2427CE0B1AD6647500DF3FF9 /* AcquisitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245163A91AD64A530017A5A8 /* AcquisitionViewController.xib */; };
+		2449F2DC1AE1ED4600C0C0CA /* f.png in Resources */ = {isa = PBXBuildFile; fileRef = 2449F2DB1AE1ED4600C0C0CA /* f.png */; };
 		244DE5E21AD78501009EAE81 /* WildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DE5E01AD78501009EAE81 /* WildViewController.swift */; };
 		244DE5E31AD78501009EAE81 /* WildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DE5E11AD78501009EAE81 /* WildViewController.xib */; };
 		244DE5E61AD7B365009EAE81 /* JobChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DE5E41AD7B365009EAE81 /* JobChangeViewController.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		240132BC1AD5B5AD00149E39 /* ChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeViewController.swift; path = ../ChangeViewController.swift; sourceTree = "<group>"; };
 		240132BD1AD5B5AD00149E39 /* ChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChangeViewController.xib; path = ../ChangeViewController.xib; sourceTree = "<group>"; };
+		2449F2DB1AE1ED4600C0C0CA /* f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f.png; sourceTree = "<group>"; };
 		244DE5E01AD78501009EAE81 /* WildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildViewController.swift; sourceTree = "<group>"; };
 		244DE5E11AD78501009EAE81 /* WildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WildViewController.xib; sourceTree = "<group>"; };
 		244DE5E41AD7B365009EAE81 /* JobChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobChangeViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				24A72F9A1AD3D37E00FD043F /* MarketView.swift */,
 				24A72F981AD3D36B00FD043F /* MarketView.xib */,
+				2449F2DB1AE1ED4600C0C0CA /* f.png */,
 				249BE14D1AD2A76000FB8B88 /* Info.plist */,
 				24A72F921AD3BAD000FD043F /* UIView+extension.swift */,
 			);
@@ -289,6 +292,7 @@
 				249BE1731AD2A8BF00FB8B88 /* HomeViewController.xib in Resources */,
 				249BE1861AD2BC4000FB8B88 /* P&DViewController.xib in Resources */,
 				2427CE0B1AD6647500DF3FF9 /* AcquisitionViewController.xib in Resources */,
+				2449F2DC1AE1ED4600C0C0CA /* f.png in Resources */,
 				240132BF1AD5B5AD00149E39 /* ChangeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

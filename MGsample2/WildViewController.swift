@@ -54,7 +54,7 @@ class WildViewController: UIViewController {
 
                 //name of the market label
                 if (i == 0){
-                    let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(j), 200, 100))
+                    let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(j)-16, 200, 100))
                     nameLabel.text = "\(marketNameArray[j])"
                     view.addSubview(nameLabel)
                 }

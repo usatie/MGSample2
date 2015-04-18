@@ -33,7 +33,7 @@ class LaunchViewController: UIViewController {
             var sales = employeesDic[jobTypeArray[2]]![marketNameArray[i]]!
             var plan = numberOfPlansDic[marketNameArray[i]]!
             var product = numberOfProductsDic[marketNameArray[i]]!
-            let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(i), 200, 100))
+            let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(i)-16, 200, 100))
             nameLabel.text = "\(marketNameArray[i])"
             view.addSubview(nameLabel)
             marketView.propertyLabel.hidden = false

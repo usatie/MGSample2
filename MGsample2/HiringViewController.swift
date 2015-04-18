@@ -41,7 +41,7 @@ class HiringViewController: UIViewController {
                     var marketer = employeesDic[jobTypeArray[0]]![marketNameArray[j]]!
                     var engineer = employeesDic[jobTypeArray[1]]![marketNameArray[j]]!
                     var sales = employeesDic[jobTypeArray[2]]![marketNameArray[j]]!
-                    let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(j), 200, 100))
+                    let nameLabel = UILabel(frame: CGRectMake(20, 100+100*CGFloat(j)-16, 200, 100))
                     nameLabel.text = "\(marketNameArray[j])"
                     view.addSubview(nameLabel)
                 }
